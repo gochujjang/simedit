@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:simedit/theme.dart';
-import 'package:simedit/ui/pages/home_page.dart';
-import 'package:simedit/ui/pages/register_page.dart';
-import 'package:simedit/ui/pages/widgets/buttons.dart';
-import 'package:simedit/ui/pages/widgets/forms.dart';
+import 'package:SiMedit/theme.dart';
+import 'package:SiMedit/ui/pages/home_page.dart';
+import 'package:SiMedit/ui/pages/register_page.dart';
+import 'package:SiMedit/ui/pages/widgets/buttons.dart';
+import 'package:SiMedit/ui/pages/widgets/forms.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -12,7 +12,6 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor,
       body: ListView(
         padding: const EdgeInsets.symmetric(
           horizontal: 24,

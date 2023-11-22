@@ -1,6 +1,6 @@
 {
-    "name": "simedit",
-    "short_name": "simedit",
+    "name": "SiMedit",
+    "short_name": "SiMedit",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

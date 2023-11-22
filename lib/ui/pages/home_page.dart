@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:simedit/controllers/home_controller.dart';
-import 'package:simedit/theme.dart';
-import 'package:simedit/ui/pages/beranda_page.dart';
-import 'package:simedit/ui/pages/portofolio_page.dart';
-import 'package:simedit/ui/pages/profile_page.dart';
-import 'package:simedit/ui/pages/transaksi_page.dart';
+import 'package:SiMedit/controllers/home_controller.dart';
+import 'package:SiMedit/theme.dart';
+import 'package:SiMedit/ui/pages/beranda_page.dart';
+import 'package:SiMedit/ui/pages/portofolio_page.dart';
+import 'package:SiMedit/ui/pages/profile_page.dart';
+import 'package:SiMedit/ui/pages/transaksi_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,19 +14,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(builder: (controller) {
       return Scaffold(
-        body: SafeArea(
-          child: IndexedStack(
-            index: controller.tabIndex,
-            children: [
-              BerandaPage(),
-              TransaksiPage(),
-              PortofolioPage(),
-              ProfilePage(),
-            ],
-          ),
+        body: IndexedStack(
+          index: controller.tabIndex,
+          children: [
+            BerandaPage(),
+            TransaksiPage(),
+            PortofolioPage(),
+            ProfilePage(),
+          ],
         ),
-        backgroundColor: bgColor,
         bottomNavigationBar: BottomAppBar(
+          padding: EdgeInsets.zero,
           color: whiteColor,
           shape: const CircularNotchedRectangle(),
           clipBehavior: Clip.antiAlias,
@@ -188,6 +186,7 @@ class HomePage extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           backgroundColor: blueColor,
+          shape: CircleBorder(),
           child: Image.asset(
             'assets/ic_plus_circle.png',
             height: 24,
