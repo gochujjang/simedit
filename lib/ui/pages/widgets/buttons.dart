@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simedit/theme.dart';
+import 'package:SiMedit/theme.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String title;
@@ -34,6 +34,60 @@ class PrimaryButton extends StatelessWidget {
             fontSize: 16,
             fontWeight: semiBold,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class PrimaryIconButton extends StatelessWidget {
+  final String title;
+  final Icon? iconUrl;
+  final double width;
+  final double height;
+  final VoidCallback? onPressed;
+
+  const PrimaryIconButton({
+    Key? key,
+    required this.title,
+    this.width = double.infinity,
+    this.height = 50,
+    this.iconUrl,
+    this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width,
+      height: height,
+      child: TextButton(
+        onPressed: onPressed,
+        style: TextButton.styleFrom(
+          backgroundColor: blueColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/ic_add.png',
+              width: 24, // Adjust the width as needed
+              height: 24, // Adjust the height as needed
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              title,
+              style: whiteTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: semiBold,
+              ),
+            ),
+          ],
         ),
       ),
     );

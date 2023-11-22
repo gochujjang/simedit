@@ -2,9 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:simedit/theme.dart';
-import 'package:simedit/ui/pages/login_page.dart';
-import 'package:simedit/ui/pages/widgets/buttons.dart';
+import 'package:SiMedit/theme.dart';
+import 'package:SiMedit/ui/pages/login_page.dart';
+import 'package:SiMedit/ui/pages/widgets/buttons.dart';
 
 class OnboardingPage extends StatelessWidget {
   var currentIndex = 0.obs;
@@ -32,7 +32,6 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor,
       body: Obx(
         () => Center(
           child: Column(

@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:simedit/theme.dart';
-import 'package:simedit/ui/pages/onboarding_page.dart';
+import 'package:SiMedit/theme.dart';
+import 'package:SiMedit/ui/pages/onboarding_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

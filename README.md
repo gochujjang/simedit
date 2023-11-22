@@ -1,4 +1,4 @@
-# simedit
+# SiMedit
 
 A new Flutter project.
 

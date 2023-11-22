@@ -1,4 +1,4 @@
-package com.example.simedit
+package com.example.SiMedit
 
 import io.flutter.embedding.android.FlutterActivity
 
