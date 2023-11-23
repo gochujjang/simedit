@@ -43,3 +43,9 @@ FontWeight medium = FontWeight.w500;
 FontWeight semiBold = FontWeight.w700;
 FontWeight bold = FontWeight.w800;
 FontWeight extraBold = FontWeight.w900;
+
+BoxShadow themeShadow = BoxShadow(
+  color: darkGreyColor.withOpacity(0.2),
+  blurRadius: 10.0,
+  spreadRadius: 0,
+);

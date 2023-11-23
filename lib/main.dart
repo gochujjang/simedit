@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: SplashPage(),
+      home: HomePage(),
       initialBinding: HomeBinding(),
     );
   }
