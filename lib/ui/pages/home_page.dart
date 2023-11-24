@@ -1,3 +1,4 @@
+import 'package:SiMedit/ui/pages/portofolio_transaksi_page.dart';
 import 'package:SiMedit/ui/pages/transaksi_tambah_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,8 +28,7 @@ class HomePage extends StatelessWidget {
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
             boxShadow: [
-              BoxShadow(
-                  color: darkGreyColor.withOpacity(0.4), blurRadius: 10.0),
+              themeShadow,
             ],
           ),
           child: BottomAppBar(
@@ -198,7 +198,11 @@ class HomePage extends StatelessWidget {
           width: 70,
           child: FloatingActionButton(
             onPressed: () {
-              Get.to(TransaksiTambahPage());
+              if (controller.tabIndex == 2) {
+                Get.to(PortofolioTransaksiPage());
+              } else {
+                Get.to(TransaksiTambahPage());
+              }
             },
             backgroundColor: blueColor,
             elevation: 0,
