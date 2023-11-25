@@ -27,10 +27,16 @@ class ProfilePage extends GetView<ProfileController> {
           ),
           Container(
             width: double.infinity,
+            margin: const EdgeInsets.only(
+              top: 5,
+            ),
             padding: const EdgeInsets.symmetric(horizontal: 54, vertical: 37),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               color: whiteColor,
+              boxShadow: [
+                themeShadow,
+              ],
             ),
             child: Column(
               children: [

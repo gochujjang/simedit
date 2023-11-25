@@ -52,6 +52,13 @@ class RegisterPage extends StatelessWidget {
             decoration: BoxDecoration(
               color: whiteColor,
               borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: darkGreyColor.withOpacity(0.2),
+                  blurRadius: 10.0,
+                  spreadRadius: 0,
+                ),
+              ],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
