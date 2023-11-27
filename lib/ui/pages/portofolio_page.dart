@@ -42,7 +42,7 @@ class PortofolioPage extends GetView<PortofolioController> {
                             ),
                           ),
                           Text(
-                            formatCurrency(10000000),
+                            formatCurrency(993000),
                             style: whiteTextStyle.copyWith(
                               fontSize: 24,
                               fontWeight: semiBold,
@@ -61,9 +61,9 @@ class PortofolioPage extends GetView<PortofolioController> {
                             ),
                           ),
                           Text(
-                            formatCurrency(30000000),
+                            formatCurrency(2300000),
                             style: whiteTextStyle.copyWith(
-                              fontSize: 18,
+                              fontSize: 14,
                               fontWeight: semiBold,
                             ),
                           ),
@@ -100,20 +100,28 @@ class PortofolioPage extends GetView<PortofolioController> {
                           height: 30,
                         ),
                         PortofolioCard(
-                          title: "Buat nongkrong",
-                          persen: 0.55,
+                          title: "Keyboard VortexSeries",
+                          persen: 0.30,
+                          terkumpul: 300000,
+                          target: 1000000,
                         ),
                         PortofolioCard(
-                          title: "Buat nongkrong",
-                          persen: 0.55,
+                          title: "Deskmat Tenjin",
+                          persen: 0.72,
+                          terkumpul: 468000,
+                          target: 650000,
                         ),
                         PortofolioCard(
-                          title: "Buat nongkrong",
-                          persen: 0.55,
+                          title: "TWS baru",
+                          persen: 0.10,
+                          terkumpul: 45000,
+                          target: 450000,
                         ),
                         PortofolioCard(
-                          title: "Buat nongkrong",
-                          persen: 0.55,
+                          title: "Teater JKT48",
+                          persen: 0.90,
+                          terkumpul: 180000,
+                          target: 200000,
                         ),
                         const SizedBox(
                           height: 30,

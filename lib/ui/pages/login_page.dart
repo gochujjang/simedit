@@ -65,7 +65,7 @@ class LoginPage extends StatelessWidget {
                 // input username
                 InputField(
                   title: 'Username',
-                  hintText: 'Username atau email anda...',
+                  hintText: 'Masukkan username...',
                 ),
                 const SizedBox(
                   height: 16,

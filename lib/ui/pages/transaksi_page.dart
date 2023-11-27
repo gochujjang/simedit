@@ -99,21 +99,32 @@ class TransaksiPage extends GetView<TransaksiController> {
                       height: 20,
                     ),
                     TransaksiCard(
-                      title: "Gajian",
-                    ),
-                    TransaksiCard(
-                      title: "Warteg",
+                      title: "Makan diluar",
+                      nominal: 20000,
                       status: false,
+                      tanggal: '20-05-2023, 12:00',
                     ),
                     TransaksiCard(
-                      title: "Boboko",
+                      title: "Paket Data",
+                      nominal: 50000,
                       status: false,
+                      tanggal: '20-11-2023, 08:45',
                     ),
                     TransaksiCard(
-                      title: "Gajian",
+                      title: "Online Shopping",
+                      nominal: 350000,
+                      status: false,
+                      tanggal: '15-11-2023, 14:30',
                     ),
                     TransaksiCard(
-                      title: "Jajan",
+                      title: "Part-Time",
+                      nominal: 1500000,
+                      tanggal: '02-11-2023, 12:30',
+                    ),
+                    TransaksiCard(
+                      title: "Uang Saku",
+                      nominal: 2000000,
+                      tanggal: '02-11-2023, 07:30',
                     ),
                     const SizedBox(
                       height: 50,

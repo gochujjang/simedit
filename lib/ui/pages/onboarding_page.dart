@@ -22,9 +22,9 @@ class OnboardingPage extends StatelessWidget {
   ].obs;
 
   RxList<String> subtitle = [
-    'Lacak dan kelola keuangan\nAnda dengan mudah.',
-    'Catat pengeluaran harian\ndengan cepat dan efisien.',
-    'Raih tujuan keuangan Anda\ndengan bantuan sistem kami.',
+    'Alokasikan uang sesuai keinginanmu jadi lebih cerdas \ndan fleksibel bareng SiMedit',
+    'Lupa catat riwayat transaksi kamu?\nSekarang udah engga dong, kan udah di catat sama SiMedit',
+    'Tunggu apa lagi, yuk atur keuangan kamu bareng SiMedit',
   ].obs;
 
   CarouselController _carouselController = CarouselController();
