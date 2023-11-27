@@ -127,7 +127,7 @@ class HomePage extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       top: 13,
                     ), // Adjust the padding as needed
                     child: Column(
@@ -139,7 +139,7 @@ class HomePage extends StatelessWidget {
                               ? blueColor
                               : darkGreyColor,
                         ),
-                        SizedBox(
+                        const SizedBox(
                             height:
                                 4.0), // Adjust the spacing between icon and label
                         Text(
@@ -159,7 +159,7 @@ class HomePage extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       top: 13,
                     ), // Adjust the padding as needed
                     child: Column(
@@ -171,7 +171,7 @@ class HomePage extends StatelessWidget {
                               ? blueColor
                               : darkGreyColor,
                         ),
-                        SizedBox(
+                        const SizedBox(
                             height:
                                 4.0), // Adjust the spacing between icon and label
                         Text(
@@ -199,14 +199,14 @@ class HomePage extends StatelessWidget {
           child: FloatingActionButton(
             onPressed: () {
               if (controller.tabIndex == 2) {
-                Get.to(PortofolioTransaksiPage());
+                Get.to(() => PortofolioTransaksiPage());
               } else {
-                Get.to(TransaksiTambahPage());
+                Get.to(() => TransaksiTambahPage());
               }
             },
             backgroundColor: blueColor,
             elevation: 0,
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
             child: Image.asset(
               'assets/ic_plus_circle.png',
               height: 35,

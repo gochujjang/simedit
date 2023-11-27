@@ -13,9 +13,9 @@ class TransaksiPage extends GetView<TransaksiController> {
       Get.put(DropdownListController());
 
   final List<String> dropdownList = [
-    "Hari",
-    "Bulan",
-  ].toList();
+    "Hari ini",
+    "Bulan ini",
+  ].toSet().toList();
 
   @override
   Widget build(BuildContext context) {

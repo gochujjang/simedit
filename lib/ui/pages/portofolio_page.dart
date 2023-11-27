@@ -1,3 +1,4 @@
+import 'package:SiMedit/ui/pages/portofolio_tambah_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -91,7 +92,9 @@ class PortofolioPage extends GetView<PortofolioController> {
                         ),
                         PrimaryIconButton(
                           title: 'Tambah Portofolio',
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(PortofolioTambahPage());
+                          },
                         ),
                         const SizedBox(
                           height: 30,
