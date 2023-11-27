@@ -43,22 +43,32 @@ class BerandaPage extends GetView<HomeController> {
               height: 15,
             ),
             TransaksiCard(
-              title: "Wareg",
+              title: "Makan diluar",
+              nominal: 20000,
               status: false,
+              tanggal: '20-05-2023, 12:00',
             ),
             TransaksiCard(
-              title: "Gajian",
-            ),
-            TransaksiCard(
-              title: "Wareg",
+              title: "Paket Data",
+              nominal: 50000,
               status: false,
+              tanggal: '20-11-2023, 08:45',
             ),
             TransaksiCard(
-              title: "Gajian",
-            ),
-            TransaksiCard(
-              title: "Wareg",
+              title: "Online Shopping",
+              nominal: 350000,
               status: false,
+              tanggal: '15-11-2023, 14:30',
+            ),
+            TransaksiCard(
+              title: "Part-Time",
+              nominal: 1500000,
+              tanggal: '02-11-2023, 12:30',
+            ),
+            TransaksiCard(
+              title: "Uang Saku",
+              nominal: 2000000,
+              tanggal: '02-11-2023, 07:30',
             ),
             const SizedBox(
               height: 36,
@@ -74,16 +84,20 @@ class BerandaPage extends GetView<HomeController> {
               height: 15,
             ),
             MiniPortofolioCard(
-              title: 'Buat beli mobil',
-              persen: 0.55,
+              title: 'Keyboard VortexSeries',
+              persen: 0.30,
             ),
             MiniPortofolioCard(
-              title: 'Buat beli mobil',
-              persen: 0.58,
+              title: 'Deskmat Tenjin',
+              persen: 0.72,
             ),
             MiniPortofolioCard(
-              title: 'Buat beli mobil',
-              persen: 0.25,
+              title: 'TWS baru',
+              persen: 0.10,
+            ),
+            MiniPortofolioCard(
+              title: 'Tiket Konser JKT48',
+              persen: 0.90,
             ),
             const SizedBox(
               height: 55,
@@ -178,7 +192,7 @@ class BerandaPage extends GetView<HomeController> {
                 ),
               ),
               Text(
-                formatCurrency(15000000),
+                formatCurrency(3080000),
                 style: whiteTextStyle.copyWith(
                   fontSize: 24,
                   fontWeight: semiBold,

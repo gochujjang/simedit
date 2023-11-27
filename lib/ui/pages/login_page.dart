@@ -47,7 +47,7 @@ class LoginPage extends StatelessWidget {
             height: 24,
           ),
           Container(
-            padding: EdgeInsets.all(22),
+            padding: const EdgeInsets.all(22),
             decoration: BoxDecoration(
               color: whiteColor,
               borderRadius: BorderRadius.circular(20),
@@ -65,7 +65,7 @@ class LoginPage extends StatelessWidget {
                 // input username
                 InputField(
                   title: 'Username',
-                  hintText: 'Username atau email anda...',
+                  hintText: 'Masukkan username...',
                 ),
                 const SizedBox(
                   height: 16,

@@ -66,22 +66,21 @@ class RegisterPage extends StatelessWidget {
                 // input username
                 InputField(
                   title: 'Nama',
-                  hintText: 'Username atau email anda...',
+                  hintText: 'Masukkan nama anda...',
                 ),
                 const SizedBox(
                   height: 16,
                 ),
                 InputField(
                   title: 'Username',
-                  hintText: 'Masukkan password...',
+                  hintText: 'Masukkan username...',
                 ),
                 const SizedBox(
                   height: 16,
                 ),
                 InputField(
                   title: 'Email',
-                  hintText: 'Masukkan password...',
-                  obscureText: true,
+                  hintText: 'Masukkan email...',
                 ),
                 const SizedBox(
                   height: 16,
