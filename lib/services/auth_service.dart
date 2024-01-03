@@ -17,7 +17,7 @@ class AuthService {
           },
         ),
         data: {
-          "username": username, //     kozey.craig@example.org
+          "username": username, //     dadang
           "password": password,
         },
       );
@@ -27,6 +27,36 @@ class AuthService {
       print("Token saved in GetStorage: ${box.read("token")}");
       return true;
     } on Exception catch (_) {
+      return false;
+    }
+  }
+
+  // register
+  register({
+    required String name,
+    required String username,
+    required String email,
+    required String password,
+  }) async {
+    try {
+      var response = await Dio().post(
+        "https://medit.kreatifsolusindo.id/api/register",
+        options: Options(
+          headers: {
+            "Content-Type": "application/json",
+          },
+        ),
+        data: {
+          "name": name,
+          "username": username,
+          "email": email,
+          "password": password,
+        },
+      );
+      Map obj = response.data;
+      return true;
+    } on Exception catch (err) {
+      print(err);
       return false;
     }
   }

@@ -1,32 +1,32 @@
-import 'package:SiMedit/controllers/login_controller.dart';
+import 'package:SiMedit/controllers/register_controller.dart';
+import 'package:SiMedit/ui/pages/login_page.dart';
 import 'package:SiMedit/ui/widgets/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/theme.dart';
-import 'package:SiMedit/ui/pages/home_page.dart';
-import 'package:SiMedit/ui/pages/register_page.dart';
 import 'package:SiMedit/ui/widgets/buttons.dart';
 import 'package:SiMedit/ui/widgets/forms.dart';
 
-class LoginPage extends GetView<LoginController> {
-  // const LoginPage({super.key});
-  LoginController controller = Get.put(LoginController());
+import 'home_page.dart';
 
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+class RegisterPage extends GetView<RegisterController> {
+  // const RegisterPage({super.key});
+  RegisterController controller = Get.put(RegisterController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: const EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           horizontal: 24,
         ),
         children: [
           Container(
-            height: 50,
+            width: 123,
+            height: 29,
             margin: const EdgeInsets.only(
-              top: 100,
-              bottom: 64,
+              top: 75,
+              bottom: 27,
             ),
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -35,16 +35,15 @@ class LoginPage extends GetView<LoginController> {
             ),
           ),
           Text(
-            'Login',
+            'Registrasi',
             style: font_semiBold.copyWith(
               color: darkBlueColor,
               fontSize: 16,
             ),
           ),
           Text(
-            'Masukkan username dan password',
+            'Masukkan data yang sesuai',
             style: font_regular.copyWith(
-              fontWeight: regular,
               color: darkGreyColor,
             ),
           ),
@@ -52,7 +51,7 @@ class LoginPage extends GetView<LoginController> {
             height: 24,
           ),
           Container(
-            padding: const EdgeInsets.all(22),
+            padding: EdgeInsets.all(22),
             decoration: BoxDecoration(
               color: whiteColor,
               borderRadius: BorderRadius.circular(20),
@@ -71,9 +70,19 @@ class LoginPage extends GetView<LoginController> {
                 children: [
                   // input username
                   InputField(
+                    title: 'Nama',
+                    hintText: 'Masukkan nama anda...',
+                    validator: Validator.required,
+                    onChange: (value) {
+                      controller.name = value;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  InputField(
                     title: 'Username',
                     hintText: 'Masukkan username...',
-                    controller: usernameController,
                     validator: Validator.required,
                     onChange: (value) {
                       controller.username = value;
@@ -82,7 +91,17 @@ class LoginPage extends GetView<LoginController> {
                   const SizedBox(
                     height: 16,
                   ),
-                  //password
+                  InputField(
+                    title: 'Email',
+                    hintText: 'Masukkan email...',
+                    validator: Validator.required,
+                    onChange: (value) {
+                      controller.email = value;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
                   InputFieldPassword(
                     title: 'Password',
                     hintText: 'Masukkan password...',
@@ -95,11 +114,13 @@ class LoginPage extends GetView<LoginController> {
                     height: 48,
                   ),
                   PrimaryButton(
-                    title: 'Login',
+                    title: 'Daftar',
                     onPressed: () {
-                      debugPrint("Username : ${usernameController.text}");
-                      debugPrint("Password : ${passwordController.text}");
-                      controller.onLogin();
+                      debugPrint("Email : ${controller.email}");
+                      debugPrint("name : ${controller.name}");
+                      debugPrint("username : ${controller.username}");
+                      debugPrint("password : ${controller.password}");
+                      controller.doRegister();
                     },
                   ),
                 ],
@@ -107,12 +128,12 @@ class LoginPage extends GetView<LoginController> {
             ),
           ),
           const SizedBox(
-            height: 48,
+            height: 30,
           ),
           CustomTextButton(
-            title: 'Registrasi Akun',
+            title: 'Login Sekarang',
             onPressed: () {
-              Get.off(() => RegisterPage());
+              Get.off(() => LoginPage());
             },
           ),
         ],
