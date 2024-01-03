@@ -5,8 +5,11 @@ import 'package:SiMedit/controllers/bindings/home_binding.dart';
 import 'package:SiMedit/theme.dart';
 import 'package:SiMedit/ui/pages/home_page.dart';
 import 'package:SiMedit/ui/pages/splash_page.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
+
   runApp(const MyApp());
 }
 

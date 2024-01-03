@@ -9,6 +9,8 @@ import 'package:SiMedit/ui/pages/profile/profile_reset_page.dart';
 import 'package:SiMedit/ui/widgets/profile_menu_item.dart';
 
 class ProfilePage extends GetView<ProfileController> {
+  ProfileController controller = Get.put(ProfileController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +92,7 @@ class ProfilePage extends GetView<ProfileController> {
                   title: 'Log out',
                   textColor: redColor,
                   onTap: () {
-                    Get.to(() => LoginPage());
+                    controller.logout();
                   },
                 ),
               ],

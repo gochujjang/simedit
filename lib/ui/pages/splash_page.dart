@@ -1,32 +1,18 @@
 import 'dart:async';
 
+import 'package:SiMedit/controllers/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/theme.dart';
 import 'package:SiMedit/ui/pages/onboarding_page.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
-
-  @override
-  State<SplashPage> createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    Timer(Duration(seconds: 2), () {
-      Get.off(() => OnboardingPage());
-    });
-  }
+class SplashPage extends GetView<SplashController> {
+  final SplashController controller = Get.put(SplashController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor,
+      backgroundColor: whiteColor,
       body: Center(
         child: Container(
           width: 300,

@@ -1,3 +1,5 @@
+import 'package:SiMedit/controllers/login_controller.dart';
+import 'package:SiMedit/ui/widgets/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/theme.dart';
@@ -6,9 +8,12 @@ import 'package:SiMedit/ui/pages/transaksi/register_page.dart';
 import 'package:SiMedit/ui/widgets/buttons.dart';
 import 'package:SiMedit/ui/widgets/forms.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginPage extends GetView<LoginController> {
+  // const LoginPage({super.key});
+  LoginController controller = Get.put(LoginController());
 
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,33 +64,46 @@ class LoginPage extends StatelessWidget {
                 ),
               ],
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // input username
-                InputField(
-                  title: 'Username',
-                  hintText: 'Masukkan username...',
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                //password
-                InputField(
-                  title: 'Password',
-                  hintText: 'Masukkan password...',
-                  obscureText: true,
-                ),
-                const SizedBox(
-                  height: 48,
-                ),
-                PrimaryButton(
-                  title: 'Login',
-                  onPressed: () {
-                    Get.off(() => HomePage());
-                  },
-                ),
-              ],
+            child: Form(
+              key: controller.formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // input username
+                  InputField(
+                    title: 'Username',
+                    hintText: 'Masukkan username...',
+                    controller: usernameController,
+                    validator: Validator.required,
+                    onChange: (value) {
+                      controller.username = value;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  //password
+                  InputFieldPassword(
+                    title: 'Password',
+                    hintText: 'Masukkan password...',
+                    validator: Validator.required,
+                    onChange: (value) {
+                      controller.password = value;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  PrimaryButton(
+                    title: 'Login',
+                    onPressed: () {
+                      debugPrint("Username : ${usernameController.text}");
+                      debugPrint("Password : ${passwordController.text}");
+                      controller.onLogin();
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(
