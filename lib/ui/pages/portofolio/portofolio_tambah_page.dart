@@ -2,8 +2,8 @@ import 'package:SiMedit/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'widgets/buttons.dart';
-import 'widgets/forms.dart';
+import '../../widgets/buttons.dart';
+import '../../widgets/forms.dart';
 
 class PortofolioTambahPage extends StatelessWidget {
   const PortofolioTambahPage({super.key});

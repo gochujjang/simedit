@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:SiMedit/controllers/profile_controller.dart';
 import 'package:SiMedit/theme.dart';
 import 'package:SiMedit/ui/pages/login_page.dart';
-import 'package:SiMedit/ui/pages/profile_edit_page.dart';
-import 'package:SiMedit/ui/pages/profile_help_page.dart';
-import 'package:SiMedit/ui/pages/profile_reset_page.dart';
-import 'package:SiMedit/ui/pages/widgets/profile_menu_item.dart';
+import 'package:SiMedit/ui/pages/profile/profile_edit_page.dart';
+import 'package:SiMedit/ui/pages/profile/profile_help_page.dart';
+import 'package:SiMedit/ui/pages/profile/profile_reset_page.dart';
+import 'package:SiMedit/ui/widgets/profile_menu_item.dart';
 
 class ProfilePage extends GetView<ProfileController> {
   @override

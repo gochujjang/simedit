@@ -6,7 +6,7 @@ import 'package:SiMedit/controllers/shared/format_currency.dart';
 import 'package:SiMedit/controllers/home_controller.dart';
 import 'package:SiMedit/theme.dart';
 
-import 'widgets/card.dart';
+import '../../widgets/card.dart';
 
 class BerandaPage extends GetView<HomeController> {
   @override

@@ -2,8 +2,8 @@ import 'package:SiMedit/controllers/shared/datepicker_controller.dart';
 import 'package:SiMedit/controllers/transaksi_tambah_controller.dart';
 import 'package:SiMedit/theme.dart';
 import 'package:SiMedit/ui/pages/home_page.dart';
-import 'package:SiMedit/ui/pages/widgets/buttons.dart';
-import 'package:SiMedit/ui/pages/widgets/forms.dart';
+import 'package:SiMedit/ui/widgets/buttons.dart';
+import 'package:SiMedit/ui/widgets/forms.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -106,7 +106,7 @@ class TransaksiTambahPage extends StatelessWidget {
                                     child: Text(
                                       'Pendapatan',
                                       style: whiteTextStyle.copyWith(
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         fontWeight: semiBold,
                                         color: statusController
                                                     .isStatusActive.value ==
@@ -155,7 +155,7 @@ class TransaksiTambahPage extends StatelessWidget {
                                                 true
                                             ? whiteColor
                                             : blueColor,
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         fontWeight: semiBold,
                                       ),
                                     ),

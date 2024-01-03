@@ -1,13 +1,13 @@
-import 'package:SiMedit/ui/pages/portofolio_tambah_page.dart';
+import 'package:SiMedit/ui/pages/portofolio/portofolio_tambah_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/controllers/portofolio_controller.dart';
 import 'package:SiMedit/controllers/shared/format_currency.dart';
 import 'package:SiMedit/theme.dart';
-import 'package:SiMedit/ui/pages/widgets/card.dart';
+import 'package:SiMedit/ui/widgets/card.dart';
 
-import 'widgets/buttons.dart';
+import '../../widgets/buttons.dart';
 
 class PortofolioPage extends GetView<PortofolioController> {
   @override

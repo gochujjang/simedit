@@ -4,9 +4,8 @@ import 'package:get/get.dart';
 import 'package:SiMedit/controllers/shared/dropdown_controller.dart';
 import 'package:SiMedit/controllers/transaksi_controller.dart';
 import 'package:SiMedit/theme.dart';
-import 'package:SiMedit/ui/pages/widgets/card.dart';
-import 'package:SiMedit/ui/pages/widgets/forms.dart';
-import 'package:SiMedit/ui/pages/widgets/header_page.dart';
+import 'package:SiMedit/ui/widgets/card.dart';
+import 'package:SiMedit/ui/widgets/header_page.dart';
 
 class TransaksiPage extends GetView<TransaksiController> {
   final DropdownListController dropdownListController =

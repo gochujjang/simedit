@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/theme.dart';
 import 'package:SiMedit/ui/pages/home_page.dart';
-import 'package:SiMedit/ui/pages/register_page.dart';
-import 'package:SiMedit/ui/pages/widgets/buttons.dart';
-import 'package:SiMedit/ui/pages/widgets/forms.dart';
+import 'package:SiMedit/ui/pages/transaksi/register_page.dart';
+import 'package:SiMedit/ui/widgets/buttons.dart';
+import 'package:SiMedit/ui/widgets/forms.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

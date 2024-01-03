@@ -1,12 +1,12 @@
 import 'package:SiMedit/controllers/pilih_portofolio_controller.dart';
 import 'package:SiMedit/controllers/transaksi_tambah_controller.dart';
 import 'package:SiMedit/theme.dart';
-import 'package:SiMedit/ui/pages/widgets/forms.dart';
+import 'package:SiMedit/ui/widgets/forms.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'home_page.dart';
-import 'widgets/buttons.dart';
+import '../home_page.dart';
+import '../../widgets/buttons.dart';
 
 class PortofolioTransaksiPage extends StatelessWidget {
   final TransaksiTambahController statusController =
@@ -115,7 +115,7 @@ class PortofolioTransaksiPage extends StatelessWidget {
                                     child: Text(
                                       'Pendapatan',
                                       style: whiteTextStyle.copyWith(
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         fontWeight: semiBold,
                                         color: statusController
                                                     .isStatusActive.value ==
@@ -164,7 +164,7 @@ class PortofolioTransaksiPage extends StatelessWidget {
                                                 true
                                             ? whiteColor
                                             : blueColor,
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         fontWeight: semiBold,
                                       ),
                                     ),

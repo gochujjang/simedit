@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/theme.dart';
-import 'package:SiMedit/ui/pages/widgets/buttons.dart';
-import 'package:SiMedit/ui/pages/widgets/forms.dart';
+import 'package:SiMedit/ui/widgets/buttons.dart';
+import 'package:SiMedit/ui/widgets/forms.dart';
 
-import 'home_page.dart';
+import '../home_page.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});

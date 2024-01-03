@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/theme.dart';
-import 'package:SiMedit/ui/pages/widgets/forms.dart';
+import 'package:SiMedit/ui/widgets/forms.dart';
 
-import 'home_page.dart';
-import 'widgets/buttons.dart';
+import '../home_page.dart';
+import '../../widgets/buttons.dart';
 
 class ProfileEditPage extends StatelessWidget {
   const ProfileEditPage({super.key});

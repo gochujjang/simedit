@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:SiMedit/theme.dart';
 import 'package:SiMedit/ui/pages/login_page.dart';
-import 'package:SiMedit/ui/pages/widgets/buttons.dart';
+import 'package:SiMedit/ui/widgets/buttons.dart';
 
 class OnboardingPage extends StatelessWidget {
   var currentIndex = 0.obs;

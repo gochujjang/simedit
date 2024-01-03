@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/theme.dart';
 
-import 'widgets/buttons.dart';
-import 'widgets/forms.dart';
+import '../../widgets/buttons.dart';
+import '../../widgets/forms.dart';
 
 class ProfileResetPage extends StatelessWidget {
   const ProfileResetPage({super.key});
