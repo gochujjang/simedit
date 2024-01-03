@@ -85,9 +85,9 @@ class OnboardingPage extends StatelessWidget {
                     ),
                     Text(
                       subtitle[currentIndex.value],
-                      style: darkGreyTextStyle.copyWith(
+                      style: font_regular.copyWith(
                         fontSize: 16,
-                        fontWeight: regular,
+                        color: darkGreyColor,
                       ),
                       textAlign: TextAlign.center,
                     ),

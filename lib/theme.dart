@@ -15,34 +15,37 @@ Color bgColor = const Color(0xffF6F9FF);
 Color whiteColor = const Color(0xffFFFFFF);
 
 // textstyle
-TextStyle blackTextStyle = GoogleFonts.poppins(
+TextStyle font_light = GoogleFonts.poppins(
+  fontWeight: light,
   color: blackColor,
 );
-TextStyle darkGreyTextStyle = GoogleFonts.poppins(
-  color: darkGreyColor,
+TextStyle font_regular = GoogleFonts.poppins(
+  fontWeight: regular,
+  color: blackColor,
 );
-TextStyle darkBlueTextStyle = GoogleFonts.poppins(
-  color: darkBlueColor,
+TextStyle font_medium = GoogleFonts.poppins(
+  fontWeight: medium,
+  color: blackColor,
 );
-TextStyle blueTextStyle = GoogleFonts.poppins(
-  color: blueColor,
+TextStyle font_semiBold = GoogleFonts.poppins(
+  fontWeight: semiBold,
+  color: blackColor,
 );
-TextStyle whiteTextStyle = GoogleFonts.poppins(
-  color: bgColor,
+TextStyle font_bold = GoogleFonts.poppins(
+  fontWeight: bold,
+  color: blackColor,
 );
-TextStyle redTextStyle = GoogleFonts.poppins(
-  color: redColor,
-);
-TextStyle greenTextStyle = GoogleFonts.poppins(
-  color: greenColor,
+TextStyle font_extraBold = GoogleFonts.poppins(
+  fontWeight: extraBold,
+  color: blackColor,
 );
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
 FontWeight medium = FontWeight.w500;
-FontWeight semiBold = FontWeight.w700;
-FontWeight bold = FontWeight.w800;
-FontWeight extraBold = FontWeight.w900;
+FontWeight semiBold = FontWeight.w600;
+FontWeight bold = FontWeight.w700;
+FontWeight extraBold = FontWeight.w800;
 
 BoxShadow themeShadow = BoxShadow(
   color: darkGreyColor.withOpacity(0.2),

@@ -27,9 +27,7 @@ class InputField extends StatelessWidget {
         // input username
         Text(
           title,
-          style: blackTextStyle.copyWith(
-            fontWeight: semiBold,
-          ),
+          style: font_semiBold
         ),
         const SizedBox(
           height: 8,
@@ -42,9 +40,8 @@ class InputField extends StatelessWidget {
             fillColor: whiteColor,
             focusColor: whiteColor,
             hintText: hintText,
-            hintStyle: darkGreyTextStyle.copyWith(
+            hintStyle: font_regular.copyWith(
               fontSize: 14,
-              fontWeight: regular,
               color: greyColor,
             ),
             border: OutlineInputBorder(
@@ -95,9 +92,7 @@ class InputFieldNumber extends StatelessWidget {
         // input username
         Text(
           title,
-          style: blackTextStyle.copyWith(
-            fontWeight: semiBold,
-          ),
+          style: font_semiBold
         ),
         const SizedBox(
           height: 8,
@@ -115,9 +110,8 @@ class InputFieldNumber extends StatelessWidget {
             fillColor: whiteColor,
             focusColor: whiteColor,
             hintText: hintText,
-            hintStyle: darkGreyTextStyle.copyWith(
+            hintStyle: font_regular.copyWith(
               fontSize: 14,
-              fontWeight: regular,
               color: greyColor,
             ),
             border: OutlineInputBorder(
@@ -170,9 +164,7 @@ class InputFieldDate extends StatelessWidget {
         // input username
         Text(
           title,
-          style: blackTextStyle.copyWith(
-            fontWeight: semiBold,
-          ),
+          style: font_semiBold
         ),
         const SizedBox(
           height: 8,
@@ -194,8 +186,7 @@ class InputFieldDate extends StatelessWidget {
               ),
             ),
             hintText: hintText,
-            hintStyle: darkGreyTextStyle.copyWith(
-              fontWeight: regular,
+            hintStyle: font_regular.copyWith(
               color: greyColor,
             ),
             border: OutlineInputBorder(

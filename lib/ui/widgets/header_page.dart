@@ -18,16 +18,16 @@ class HeaderTransaksi extends StatelessWidget {
         children: [
           Text(
             'Sisa Uang Kamu',
-            style: whiteTextStyle.copyWith(
+            style: font_regular.copyWith(
               fontSize: 16,
-              fontWeight: regular,
+              color: whiteColor,
             ),
           ),
           Text(
             formatCurrency(3080000),
-            style: whiteTextStyle.copyWith(
+            style: font_semiBold.copyWith(
               fontSize: 30,
-              fontWeight: semiBold,
+              color: whiteColor,
             ),
           ),
           const SizedBox(

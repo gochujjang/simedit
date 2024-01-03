@@ -31,8 +31,8 @@ class TransaksiTambahPage extends StatelessWidget {
         ),
         title: Text(
           "Tambah Transaksi",
-          style: whiteTextStyle.copyWith(
-            fontWeight: semiBold,
+          style: font_semiBold.copyWith(
+            color: whiteColor,
             fontSize: 18,
           ),
         ),
@@ -105,9 +105,8 @@ class TransaksiTambahPage extends StatelessWidget {
                                     alignment: Alignment.center,
                                     child: Text(
                                       'Pendapatan',
-                                      style: whiteTextStyle.copyWith(
+                                      style: font_semiBold.copyWith(
                                         fontSize: 14,
-                                        fontWeight: semiBold,
                                         color: statusController
                                                     .isStatusActive.value ==
                                                 false
@@ -149,14 +148,13 @@ class TransaksiTambahPage extends StatelessWidget {
                                     alignment: Alignment.center,
                                     child: Text(
                                       'Pengeluaran',
-                                      style: blueTextStyle.copyWith(
+                                      style: font_semiBold.copyWith(
                                         color: statusController
                                                     .isStatusActive.value ==
                                                 true
                                             ? whiteColor
                                             : blueColor,
                                         fontSize: 14,
-                                        fontWeight: semiBold,
                                       ),
                                     ),
                                   ),

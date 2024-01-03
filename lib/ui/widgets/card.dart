@@ -55,17 +55,15 @@ class TransaksiCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: blackTextStyle.copyWith(
+                    style: font_semiBold.copyWith(
                       fontSize: 14,
-                      fontWeight: semiBold,
                     ),
                   ),
                   Text(
                     tanggal,
-                    style: darkGreyTextStyle.copyWith(
+                    style: font_regular.copyWith(
                       color: greyColor,
                       fontSize: 12,
-                      fontWeight: regular,
                     ),
                   ),
                 ],
@@ -74,9 +72,8 @@ class TransaksiCard extends StatelessWidget {
           ),
           Text(
             formatCurrency(nominal),
-            style: redTextStyle.copyWith(
+            style: font_semiBold.copyWith(
               fontSize: 14,
-              fontWeight: semiBold,
               color: status == true ? greenColor : redColor,
             ),
           ),
@@ -119,16 +116,14 @@ class TransaksiTotalCard extends StatelessWidget {
             children: [
               Text(
                 'Pendapatan',
-                style: blackTextStyle.copyWith(
+                style: font_regular.copyWith(
                   fontSize: 14,
-                  fontWeight: regular,
                 ),
               ),
               Text(
                 formatCurrency(3500000),
-                style: blackTextStyle.copyWith(
+                style: font_semiBold.copyWith(
                   fontSize: 16,
-                  fontWeight: semiBold,
                   color: greenColor,
                 ),
               ),
@@ -139,16 +134,14 @@ class TransaksiTotalCard extends StatelessWidget {
             children: [
               Text(
                 'Pengeluaran',
-                style: blackTextStyle.copyWith(
+                style: font_regular.copyWith(
                   fontSize: 14,
-                  fontWeight: regular,
                 ),
               ),
               Text(
                 formatCurrency(420000),
-                style: blackTextStyle.copyWith(
+                style: font_semiBold.copyWith(
                   fontSize: 16,
-                  fontWeight: semiBold,
                   color: redColor,
                 ),
               ),
@@ -189,15 +182,13 @@ class MiniPortofolioCard extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: blackTextStyle.copyWith(
-                  fontWeight: semiBold,
-                ),
+                style: font_semiBold
               ),
               const Spacer(),
               Text(
                 '${(persen * 100).round()}%',
-                style: greenTextStyle.copyWith(
-                  fontWeight: semiBold,
+                style: font_semiBold.copyWith(
+                  color: greenColor
                 ),
               ),
             ],
@@ -254,16 +245,15 @@ class PortofolioCard extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: blackTextStyle.copyWith(
+                style: font_semiBold.copyWith(
                   fontSize: 14,
-                  fontWeight: semiBold,
                 ),
               ),
               const Spacer(),
               Text(
                 '${(persen * 100).round()}%',
-                style: greenTextStyle.copyWith(
-                  fontWeight: semiBold,
+                style: font_semiBold.copyWith(
+                  color: greenColor
                 ),
               ),
             ],
@@ -289,15 +279,14 @@ class PortofolioCard extends StatelessWidget {
                 children: [
                   Text(
                     'Dana Terkumpul',
-                    style: blackTextStyle.copyWith(
+                    style: font_regular.copyWith(
                       fontSize: 14,
-                      fontWeight: regular,
                     ),
                   ),
                   Text(
                     formatCurrency(terkumpul),
-                    style: greenTextStyle.copyWith(
-                      fontWeight: semiBold,
+                    style: font_semiBold.copyWith(
+                      color: greenColor
                     ),
                   ),
                 ],
@@ -307,16 +296,14 @@ class PortofolioCard extends StatelessWidget {
                 children: [
                   Text(
                     'Total Target',
-                    style: blackTextStyle.copyWith(
+                    style: font_regular.copyWith(
                       fontSize: 14,
-                      fontWeight: regular,
                     ),
                   ),
                   Text(
                     formatCurrency(target),
-                    style: darkGreyTextStyle.copyWith(
+                    style: font_semiBold.copyWith(
                       color: greyColor,
-                      fontWeight: semiBold,
                     ),
                   ),
                 ],

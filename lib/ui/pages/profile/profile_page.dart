@@ -57,9 +57,8 @@ class ProfilePage extends GetView<ProfileController> {
                 ),
                 Text(
                   'Erico Astama',
-                  style: blackTextStyle.copyWith(
+                  style: font_semiBold.copyWith(
                     fontSize: 16,
-                    fontWeight: semiBold,
                   ),
                 ),
                 const SizedBox(

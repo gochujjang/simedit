@@ -31,14 +31,14 @@ class LoginPage extends StatelessWidget {
           ),
           Text(
             'Login',
-            style: darkBlueTextStyle.copyWith(
+            style: font_semiBold.copyWith(
+              color: darkBlueColor,
               fontSize: 16,
-              fontWeight: semiBold,
             ),
           ),
           Text(
             'Masukkan username dan password',
-            style: darkBlueTextStyle.copyWith(
+            style: font_regular.copyWith(
               fontWeight: regular,
               color: darkGreyColor,
             ),

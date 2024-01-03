@@ -30,9 +30,9 @@ class PrimaryButton extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: whiteTextStyle.copyWith(
+          style: font_semiBold.copyWith(
             fontSize: 16,
-            fontWeight: semiBold,
+            color: whiteColor,
           ),
         ),
       ),
@@ -82,9 +82,9 @@ class PrimaryIconButton extends StatelessWidget {
             ),
             Text(
               title,
-              style: whiteTextStyle.copyWith(
+              style: font_semiBold.copyWith(
                 fontSize: 16,
-                fontWeight: semiBold,
+                color: whiteColor,
               ),
             ),
           ],
@@ -120,7 +120,7 @@ class CustomTextButton extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: darkGreyTextStyle.copyWith(
+          style: font_regular.copyWith(
             color: blackColor,
             fontSize: 16,
           ),

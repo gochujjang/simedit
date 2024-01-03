@@ -48,13 +48,13 @@ class HomePage extends StatelessWidget {
               unselectedItemColor: darkGreyColor,
               showUnselectedLabels: true,
               showSelectedLabels: true,
-              selectedLabelStyle: blueTextStyle.copyWith(
+              selectedLabelStyle: font_medium.copyWith(
+                color: blueColor,
                 fontSize: 10,
-                fontWeight: medium,
               ),
-              unselectedLabelStyle: darkGreyTextStyle.copyWith(
+              unselectedLabelStyle: font_medium.copyWith(
+                color: darkGreyColor,
                 fontSize: 10,
-                fontWeight: medium,
               ),
               items: [
                 BottomNavigationBarItem(

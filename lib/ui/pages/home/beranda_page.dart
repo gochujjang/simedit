@@ -34,9 +34,8 @@ class BerandaPage extends GetView<HomeController> {
             ),
             Text(
               'Transaksi Terakhir',
-              style: blackTextStyle.copyWith(
+              style: font_semiBold.copyWith(
                 fontSize: 16,
-                fontWeight: semiBold,
               ),
             ),
             const SizedBox(
@@ -75,9 +74,8 @@ class BerandaPage extends GetView<HomeController> {
             ),
             Text(
               'Tujuan Nabung',
-              style: blackTextStyle.copyWith(
+              style: font_semiBold.copyWith(
                 fontSize: 16,
-                fontWeight: semiBold,
               ),
             ),
             const SizedBox(
@@ -121,16 +119,14 @@ class BerandaPage extends GetView<HomeController> {
             children: [
               Text(
                 'Halo,',
-                style: blackTextStyle.copyWith(
+                style: font_semiBold.copyWith(
                   fontSize: 18,
-                  fontWeight: semiBold,
                 ),
               ),
               Text(
                 'Sobat Medit',
-                style: blackTextStyle.copyWith(
+                style: font_regular.copyWith(
                   fontSize: 16,
-                  fontWeight: regular,
                 ),
               ),
             ],
@@ -176,9 +172,9 @@ class BerandaPage extends GetView<HomeController> {
         children: [
           Text(
             'Erico Astama',
-            style: whiteTextStyle.copyWith(
+            style: font_medium.copyWith(
+              color: whiteColor,
               fontSize: 18,
-              fontWeight: medium,
             ),
           ),
           Column(
@@ -186,16 +182,17 @@ class BerandaPage extends GetView<HomeController> {
             children: [
               Text(
                 'Total Uang',
-                style: whiteTextStyle.copyWith(
+                style: font_regular.copyWith(
+                  color: whiteColor,
                   fontSize: 16,
                   fontWeight: regular,
                 ),
               ),
               Text(
                 formatCurrency(3080000),
-                style: whiteTextStyle.copyWith(
+                style: font_semiBold.copyWith(
+                  color: whiteColor,
                   fontSize: 24,
-                  fontWeight: semiBold,
                 ),
               ),
             ],

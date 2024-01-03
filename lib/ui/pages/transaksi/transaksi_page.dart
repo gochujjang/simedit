@@ -58,9 +58,9 @@ class TransaksiPage extends GetView<TransaksiController> {
                           child: DropdownButton<String>(
                             hint: Text(
                               'Rentang Waktu',
-                              style: darkGreyTextStyle.copyWith(
+                              style: font_regular.copyWith(
+                                color: darkGreyColor,
                                 fontSize: 14,
-                                fontWeight: regular,
                               ),
                             ),
                             padding: const EdgeInsets.only(
@@ -85,7 +85,7 @@ class TransaksiPage extends GetView<TransaksiController> {
                                   value: value,
                                   child: Text(
                                     value,
-                                    style: blackTextStyle,
+                                    style: font_regular,
                                   ),
                                 );
                               },

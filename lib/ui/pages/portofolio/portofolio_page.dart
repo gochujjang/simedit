@@ -36,16 +36,16 @@ class PortofolioPage extends GetView<PortofolioController> {
                         children: [
                           Text(
                             'Nilai Portofolio',
-                            style: whiteTextStyle.copyWith(
+                            style: font_regular.copyWith(
+                              color: whiteColor,
                               fontSize: 16,
-                              fontWeight: regular,
                             ),
                           ),
                           Text(
                             formatCurrency(993000),
-                            style: whiteTextStyle.copyWith(
+                            style: font_semiBold.copyWith(
+                              color: whiteColor,
                               fontSize: 24,
-                              fontWeight: semiBold,
                             ),
                           ),
                         ],
@@ -55,16 +55,16 @@ class PortofolioPage extends GetView<PortofolioController> {
                         children: [
                           Text(
                             'Target',
-                            style: whiteTextStyle.copyWith(
+                            style: font_regular.copyWith(
+                              color: whiteColor,
                               fontSize: 16,
-                              fontWeight: regular,
                             ),
                           ),
                           Text(
                             formatCurrency(2300000),
-                            style: whiteTextStyle.copyWith(
+                            style: font_semiBold.copyWith(
+                              color: whiteColor,
                               fontSize: 14,
-                              fontWeight: semiBold,
                             ),
                           ),
                         ],

@@ -32,15 +32,14 @@ class RegisterPage extends StatelessWidget {
           ),
           Text(
             'Registrasi',
-            style: darkBlueTextStyle.copyWith(
+            style: font_semiBold.copyWith(
+              color: darkBlueColor,
               fontSize: 16,
-              fontWeight: semiBold,
             ),
           ),
           Text(
             'Masukkan data yang sesuai',
-            style: darkBlueTextStyle.copyWith(
-              fontWeight: regular,
+            style: font_regular.copyWith(
               color: darkGreyColor,
             ),
           ),

@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(
             color: blackColor,
           ),
-          titleTextStyle: blackTextStyle.copyWith(
+          titleTextStyle: font_semiBold.copyWith(
             fontSize: 18,
             fontWeight: semiBold,
           ),
