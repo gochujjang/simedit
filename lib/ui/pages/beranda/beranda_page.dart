@@ -1,3 +1,4 @@
+import 'package:SiMedit/controllers/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -153,6 +154,8 @@ class BerandaPage extends GetView<HomeController> {
   }
 
   Widget buildWalletCard() {
+    ProfileController profileController = Get.put(ProfileController());
+    var profile = profileController.profile;
     return Container(
       width: double.infinity,
       height: 220,
@@ -170,11 +173,13 @@ class BerandaPage extends GetView<HomeController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            'Erico Astama',
-            style: font_medium.copyWith(
-              color: whiteColor,
-              fontSize: 18,
+          Obx(
+            () => Text(
+              '${profile['name']}',
+              style: font_medium.copyWith(
+                color: whiteColor,
+                fontSize: 18,
+              ),
             ),
           ),
           Column(

@@ -13,6 +13,7 @@ class ProfilePage extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
+    var profile = controller.profile;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -58,7 +59,7 @@ class ProfilePage extends GetView<ProfileController> {
                   height: 16,
                 ),
                 Text(
-                  'Erico Astama',
+                  '${profile["name"]}',
                   style: font_semiBold.copyWith(
                     fontSize: 16,
                   ),

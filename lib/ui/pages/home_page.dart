@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/controllers/home_controller.dart';
 import 'package:SiMedit/theme.dart';
-import 'package:SiMedit/ui/pages/home/beranda_page.dart';
+import 'package:SiMedit/ui/pages/beranda/beranda_page.dart';
 import 'package:SiMedit/ui/pages/portofolio/portofolio_page.dart';
 import 'package:SiMedit/ui/pages/profile/profile_page.dart';
 import 'package:SiMedit/ui/pages/transaksi/transaksi_page.dart';
