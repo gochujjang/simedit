@@ -1,4 +1,5 @@
 import 'package:SiMedit/controllers/profile_controller.dart';
+import 'package:SiMedit/controllers/transaksi_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,12 @@ import 'package:SiMedit/theme.dart';
 import '../../widgets/card.dart';
 
 class BerandaPage extends GetView<HomeController> {
+  TransaksiController transaksiController = Get.put(TransaksiController());
+
+  Future<void> _onRefresh() async {
+    await transaksiController.doTotalUang();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -20,88 +27,91 @@ class BerandaPage extends GetView<HomeController> {
     );
     return Scaffold(
       body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
+        child: RefreshIndicator(
+          onRefresh: _onRefresh,
+          child: ListView(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24,
+            ),
+            children: [
+              buildProfile(),
+              const SizedBox(
+                height: 24,
+              ),
+              buildWalletCard(),
+              const SizedBox(
+                height: 36,
+              ),
+              Text(
+                'Transaksi Terakhir',
+                style: font_semiBold.copyWith(
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              TransaksiCard(
+                title: "Makan diluar",
+                nominal: 20000,
+                status: false,
+                tanggal: '20-05-2023, 12:00',
+              ),
+              TransaksiCard(
+                title: "Paket Data",
+                nominal: 50000,
+                status: false,
+                tanggal: '20-11-2023, 08:45',
+              ),
+              TransaksiCard(
+                title: "Online Shopping",
+                nominal: 350000,
+                status: false,
+                tanggal: '15-11-2023, 14:30',
+              ),
+              TransaksiCard(
+                title: "Part-Time",
+                nominal: 1500000,
+                tanggal: '02-11-2023, 12:30',
+              ),
+              TransaksiCard(
+                title: "Uang Saku",
+                nominal: 2000000,
+                tanggal: '02-11-2023, 07:30',
+              ),
+              const SizedBox(
+                height: 36,
+              ),
+              Text(
+                'Tujuan Nabung',
+                style: font_semiBold.copyWith(
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              MiniPortofolioCard(
+                title: 'Keyboard VortexSeries',
+                persen: 0.30,
+              ),
+              MiniPortofolioCard(
+                title: 'Deskmat Tenjin',
+                persen: 0.72,
+              ),
+              MiniPortofolioCard(
+                title: 'TWS baru',
+                persen: 0.10,
+              ),
+              MiniPortofolioCard(
+                title: 'Tiket Konser JKT48',
+                persen: 0.90,
+              ),
+              const SizedBox(
+                height: 55,
+              ),
+            ],
           ),
-          children: [
-            buildProfile(),
-            const SizedBox(
-              height: 24,
-            ),
-            buildWalletCard(),
-            const SizedBox(
-              height: 36,
-            ),
-            Text(
-              'Transaksi Terakhir',
-              style: font_semiBold.copyWith(
-                fontSize: 16,
-              ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            TransaksiCard(
-              title: "Makan diluar",
-              nominal: 20000,
-              status: false,
-              tanggal: '20-05-2023, 12:00',
-            ),
-            TransaksiCard(
-              title: "Paket Data",
-              nominal: 50000,
-              status: false,
-              tanggal: '20-11-2023, 08:45',
-            ),
-            TransaksiCard(
-              title: "Online Shopping",
-              nominal: 350000,
-              status: false,
-              tanggal: '15-11-2023, 14:30',
-            ),
-            TransaksiCard(
-              title: "Part-Time",
-              nominal: 1500000,
-              tanggal: '02-11-2023, 12:30',
-            ),
-            TransaksiCard(
-              title: "Uang Saku",
-              nominal: 2000000,
-              tanggal: '02-11-2023, 07:30',
-            ),
-            const SizedBox(
-              height: 36,
-            ),
-            Text(
-              'Tujuan Nabung',
-              style: font_semiBold.copyWith(
-                fontSize: 16,
-              ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            MiniPortofolioCard(
-              title: 'Keyboard VortexSeries',
-              persen: 0.30,
-            ),
-            MiniPortofolioCard(
-              title: 'Deskmat Tenjin',
-              persen: 0.72,
-            ),
-            MiniPortofolioCard(
-              title: 'TWS baru',
-              persen: 0.10,
-            ),
-            MiniPortofolioCard(
-              title: 'Tiket Konser JKT48',
-              persen: 0.90,
-            ),
-            const SizedBox(
-              height: 55,
-            ),
-          ],
         ),
       ),
     );
@@ -155,6 +165,8 @@ class BerandaPage extends GetView<HomeController> {
 
   Widget buildWalletCard() {
     ProfileController profileController = Get.put(ProfileController());
+    TransaksiController transaksiController = Get.put(TransaksiController());
+    var totalUang = transaksiController.totalUang;
     var profile = profileController.profile;
     return Container(
       width: double.infinity,
@@ -193,13 +205,13 @@ class BerandaPage extends GetView<HomeController> {
                   fontWeight: regular,
                 ),
               ),
-              Text(
-                formatCurrency(3080000),
-                style: font_semiBold.copyWith(
-                  color: whiteColor,
-                  fontSize: 24,
-                ),
-              ),
+              Obx(() => Text(
+                    formatCurrency(totalUang.value),
+                    style: font_semiBold.copyWith(
+                      color: whiteColor,
+                      fontSize: 24,
+                    ),
+                  )),
             ],
           )
         ],

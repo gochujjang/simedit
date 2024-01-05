@@ -1,6 +1,8 @@
+import 'package:SiMedit/controllers/transaksi_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:SiMedit/controllers/shared/format_currency.dart';
 import 'package:SiMedit/theme.dart';
+import 'package:get/get.dart';
 
 class TransaksiCard extends StatelessWidget {
   final String title;
@@ -83,11 +85,13 @@ class TransaksiCard extends StatelessWidget {
   }
 }
 
-class TransaksiTotalCard extends StatelessWidget {
-  const TransaksiTotalCard({super.key});
+class TransaksiTotalCard extends GetView<TransaksiController> {
+  // const TransaksiTotalCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var income = controller.income;
+    var expense = controller.expense;
     return Container(
       width: double.infinity,
       height: 72,
@@ -120,13 +124,13 @@ class TransaksiTotalCard extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
-              Text(
-                formatCurrency(3500000),
-                style: font_semiBold.copyWith(
-                  fontSize: 16,
-                  color: greenColor,
-                ),
-              ),
+              Obx(() => Text(
+                    formatCurrency(income.value),
+                    style: font_semiBold.copyWith(
+                      fontSize: 16,
+                      color: greenColor,
+                    ),
+                  )),
             ],
           ),
           Column(
@@ -138,13 +142,13 @@ class TransaksiTotalCard extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
-              Text(
-                formatCurrency(420000),
-                style: font_semiBold.copyWith(
-                  fontSize: 16,
-                  color: redColor,
-                ),
-              ),
+              Obx(() => Text(
+                    formatCurrency(expense.value),
+                    style: font_semiBold.copyWith(
+                      fontSize: 16,
+                      color: redColor,
+                    ),
+                  )),
             ],
           ),
         ],
@@ -180,16 +184,11 @@ class MiniPortofolioCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(
-                title,
-                style: font_semiBold
-              ),
+              Text(title, style: font_semiBold),
               const Spacer(),
               Text(
                 '${(persen * 100).round()}%',
-                style: font_semiBold.copyWith(
-                  color: greenColor
-                ),
+                style: font_semiBold.copyWith(color: greenColor),
               ),
             ],
           ),
@@ -252,9 +251,7 @@ class PortofolioCard extends StatelessWidget {
               const Spacer(),
               Text(
                 '${(persen * 100).round()}%',
-                style: font_semiBold.copyWith(
-                  color: greenColor
-                ),
+                style: font_semiBold.copyWith(color: greenColor),
               ),
             ],
           ),
@@ -285,9 +282,7 @@ class PortofolioCard extends StatelessWidget {
                   ),
                   Text(
                     formatCurrency(terkumpul),
-                    style: font_semiBold.copyWith(
-                      color: greenColor
-                    ),
+                    style: font_semiBold.copyWith(color: greenColor),
                   ),
                 ],
               ),
