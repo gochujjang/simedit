@@ -1,5 +1,6 @@
 import 'package:SiMedit/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
 class QDatePicker extends StatefulWidget {
@@ -37,15 +38,17 @@ class _QDatePickerState extends State<QDatePicker> {
   }
 
   getInitialValue() {
+    initializeDateFormatting();
     if (widget.value != null) {
-      return DateFormat("d MMM y").format(widget.value!);
+      return DateFormat("d MMMM y", 'id_ID').format(widget.value!);
     }
     return "-";
   }
 
   getFormattedValue() {
+    initializeDateFormatting();
     if (selectedValue != null) {
-      return DateFormat("d MMM y").format(selectedValue!);
+      return DateFormat("d MMMM y", 'id_ID').format(selectedValue!);
     }
     return "-";
   }

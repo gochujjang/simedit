@@ -38,7 +38,7 @@ class FaqController extends GetxController {
       ),
       Faq(
         'Jika ada pertanyaan lebih lanjut',
-        'Jika anda memiliki pertanyaan lebih lanjut, silahkan kontak kami di \nEmail : eldwn777@gmail.com',
+        'Jika anda memiliki pertanyaan lebih lanjut, silahkan kontak kami di \n\nEmail : eldwn777@gmail.com',
       ),
     ];
   }
