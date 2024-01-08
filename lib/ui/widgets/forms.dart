@@ -237,7 +237,10 @@ class InputFieldNumber extends StatelessWidget {
                   const EdgeInsets.only(top: 15, left: 5, right: 0, bottom: 15),
               child: SizedBox(
                 height: 4,
-                child: Image.asset("assets/ic_rupiah.png"),
+                child: Image.asset(
+                  "assets/ic_rupiah.png",
+                  color: darkGreyColor,
+                ),
               ),
             ),
             hintStyle: font_regular.copyWith(
