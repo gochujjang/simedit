@@ -113,7 +113,7 @@ class PortofolioTransaksiPage extends StatelessWidget {
                                   child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      'Pendapatan',
+                                      'Pemasukan',
                                       style: font_semiBold.copyWith(
                                         fontSize: 14,
                                         color: statusController

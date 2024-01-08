@@ -1,13 +1,8 @@
 import 'package:get/get.dart';
 
-class Employee {
-  Employee({
-    this.body,
-    this.header,
-    this.isExpanded,
-  });
-
-  String? body;
-  String? header;
-  RxBool? isExpanded;
+class Faq {
+  Faq(this.title, this.body, [this.isExpanded = false]);
+  String title;
+  String body;
+  bool isExpanded;
 }

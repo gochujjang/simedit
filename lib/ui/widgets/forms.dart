@@ -1,9 +1,11 @@
+import 'package:SiMedit/controllers/shared/currency.dart';
 import 'package:SiMedit/controllers/shared/datepicker_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/controllers/transaksi_controller.dart';
 import 'package:SiMedit/theme.dart';
+import 'package:intl/intl.dart';
 
 class InputField extends StatelessWidget {
   final String title;
@@ -175,6 +177,8 @@ class InputFieldNumber extends StatelessWidget {
   final String hintText;
   final bool obscureText;
   final TextEditingController? controller;
+  final void Function(String?)? onChange;
+  final String? Function(String?)? validator;
 
   const InputFieldNumber({
     Key? key,
@@ -182,10 +186,14 @@ class InputFieldNumber extends StatelessWidget {
     required this.hintText,
     this.obscureText = false,
     this.controller,
+    this.onChange,
+    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
+    final currencyFormatter = NumberFormat('#,##0', 'id_ID');
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -195,18 +203,43 @@ class InputFieldNumber extends StatelessWidget {
           height: 8,
         ),
         TextFormField(
+          onChanged: onChange,
           obscureText: obscureText,
           controller: controller,
+          validator: validator,
           keyboardType: TextInputType.number,
           inputFormatters: <TextInputFormatter>[
             FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
             FilteringTextInputFormatter.digitsOnly,
+            CurrencyFormat(),
+            // TextInputFormatter.withFunction((oldValue, newValue) {
+            //   try {
+            //     final numericValue = int.parse(newValue.text);
+            //     final formattedValue = currencyFormatter.format(numericValue);
+            //     return TextEditingValue(
+            //       text: formattedValue,
+            //       selection:
+            //           TextSelection.collapsed(offset: formattedValue.length),
+            //     );
+            //   } catch (e) {
+            //     // Handle the exception if the input cannot be parsed as an integer
+            //     return oldValue;
+            //   }
+            // }),
           ],
           decoration: InputDecoration(
             filled: true,
             fillColor: whiteColor,
             focusColor: whiteColor,
             hintText: hintText,
+            prefixIcon: Padding(
+              padding:
+                  const EdgeInsets.only(top: 15, left: 5, right: 0, bottom: 15),
+              child: SizedBox(
+                height: 4,
+                child: Image.asset("assets/ic_rupiah.png"),
+              ),
+            ),
             hintStyle: font_regular.copyWith(
               fontSize: 14,
               color: greyColor,

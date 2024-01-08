@@ -3,13 +3,14 @@ import 'package:SiMedit/controllers/transaksi_tambah_controller.dart';
 import 'package:SiMedit/theme.dart';
 import 'package:SiMedit/ui/pages/home_page.dart';
 import 'package:SiMedit/ui/widgets/buttons.dart';
+import 'package:SiMedit/ui/widgets/datepicker.dart';
 import 'package:SiMedit/ui/widgets/forms.dart';
+import 'package:SiMedit/ui/widgets/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TransaksiTambahPage extends StatelessWidget {
-  final TransaksiTambahController statusController =
-      TransaksiTambahController();
+  final TransaksiTambahController controller = TransaksiTambahController();
   final DatePickerController dateController = DatePickerController();
 
   @override
@@ -73,7 +74,8 @@ class TransaksiTambahPage extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              statusController.isStatusActive.value = false;
+                              controller.status = 'pemasukan';
+                              controller.isStatusActive.value = false;
                             },
                             child: Obx(() => Container(
                                   width: 156,
@@ -87,15 +89,13 @@ class TransaksiTambahPage extends StatelessWidget {
                                   ),
                                   decoration: BoxDecoration(
                                     color:
-                                        statusController.isStatusActive.value ==
-                                                false
+                                        controller.isStatusActive.value == false
                                             ? blueColor
                                             : Colors.transparent,
                                     borderRadius: BorderRadius.circular(16),
                                     border: Border.all(
                                       color: blueColor,
-                                      width: statusController
-                                                  .isStatusActive.value ==
+                                      width: controller.isStatusActive.value ==
                                               false
                                           ? 0
                                           : 3,
@@ -104,14 +104,14 @@ class TransaksiTambahPage extends StatelessWidget {
                                   child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      'Pendapatan',
+                                      'Pemasukan',
                                       style: font_semiBold.copyWith(
                                         fontSize: 14,
-                                        color: statusController
-                                                    .isStatusActive.value ==
-                                                false
-                                            ? whiteColor
-                                            : blueColor,
+                                        color:
+                                            controller.isStatusActive.value ==
+                                                    false
+                                                ? whiteColor
+                                                : blueColor,
                                       ),
                                     ),
                                   ),
@@ -119,7 +119,8 @@ class TransaksiTambahPage extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              statusController.isStatusActive.value = true;
+                              controller.status = 'pengeluaran';
+                              controller.isStatusActive.value = true;
                             },
                             child: Obx(() => Container(
                                   width: 156,
@@ -130,14 +131,12 @@ class TransaksiTambahPage extends StatelessWidget {
                                   ),
                                   decoration: BoxDecoration(
                                     color:
-                                        statusController.isStatusActive.value ==
-                                                true
+                                        controller.isStatusActive.value == true
                                             ? blueColor
                                             : Colors.transparent,
                                     borderRadius: BorderRadius.circular(16),
                                     border: Border.all(
-                                      color: statusController
-                                                  .isStatusActive.value ==
+                                      color: controller.isStatusActive.value ==
                                               true
                                           ? Colors.transparent
                                           : blueColor,
@@ -149,11 +148,11 @@ class TransaksiTambahPage extends StatelessWidget {
                                     child: Text(
                                       'Pengeluaran',
                                       style: font_semiBold.copyWith(
-                                        color: statusController
-                                                    .isStatusActive.value ==
-                                                true
-                                            ? whiteColor
-                                            : blueColor,
+                                        color:
+                                            controller.isStatusActive.value ==
+                                                    true
+                                                ? whiteColor
+                                                : blueColor,
                                         fontSize: 14,
                                       ),
                                     ),
@@ -168,13 +167,20 @@ class TransaksiTambahPage extends StatelessWidget {
                       InputFieldNumber(
                         title: "Nominal",
                         hintText: "Masukkan nominal..",
+                        validator: Validator.required,
+                        onChange: (value) {
+                          controller.nominal = value;
+                        },
                       ),
                       const SizedBox(
                         height: 16,
                       ),
-                      InputFieldDate(
-                        title: "Tanggal",
-                        hintText: "HH/BB/TTTT",
+                      QDatePicker(
+                        label: "Tanggal",
+                        validator: Validator.required,
+                        onChanged: (value) {
+                          controller.tanggal = value.toString();
+                        },
                       ),
                       const SizedBox(
                         height: 16,
@@ -182,6 +188,10 @@ class TransaksiTambahPage extends StatelessWidget {
                       InputField(
                         title: "Keterangan",
                         hintText: "Isi deskripsi singkat",
+                        validator: Validator.required,
+                        onChange: (value) {
+                          controller.keterangan = value;
+                        },
                       ),
                       const SizedBox(
                         height: 48,
@@ -189,6 +199,12 @@ class TransaksiTambahPage extends StatelessWidget {
                       PrimaryIconButton(
                         title: "Tambah Transaksi",
                         onPressed: () {
+                          final formattedNominal =
+                              controller.nominal?.replaceAll(".", "");
+                          print("Status : ${controller.status}");
+                          print("Nominal : ${formattedNominal}");
+                          print("Tanggal : ${controller.tanggal}");
+                          print("Keterangan : ${controller.keterangan}");
                           Get.back();
                         },
                       ),
