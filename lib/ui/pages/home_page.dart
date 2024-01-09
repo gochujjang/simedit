@@ -1,3 +1,4 @@
+import 'package:SiMedit/controllers/transaksi_controller.dart';
 import 'package:SiMedit/ui/pages/portofolio/portofolio_transaksi_page.dart';
 import 'package:SiMedit/ui/pages/transaksi/transaksi_tambah_page.dart';
 import 'package:flutter/material.dart';

@@ -50,6 +50,7 @@ class TransaksiTambahController extends GetxController {
       transaksiController.doTotalUang();
       transaksiController.doIncome();
       transaksiController.doExpense();
+      transaksiController.getTransaksi();
 
       update();
       Get.off(() => HomePage());
