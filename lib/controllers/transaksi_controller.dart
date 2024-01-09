@@ -13,8 +13,10 @@ class TransaksiController extends GetxController {
   }
 
   RxList<dynamic> latestTransaksi = <dynamic>[].obs;
+  RxList<dynamic> allTransaksi = <dynamic>[].obs;
   Future<void> getTransaksi() async {
     try {
+      allTransaksi.assignAll(await TransaksiService().get());
       latestTransaksi.assignAll(await TransaksiService().getLatest());
     } on Exception catch (err) {
       print(err);

@@ -22,11 +22,12 @@ class BerandaPage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
+        statusBarColor: bgColor,
         statusBarIconBrightness: Brightness.dark,
       ),
     );
     return Scaffold(
+      backgroundColor: bgColor,
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: _onRefresh,
@@ -53,35 +54,43 @@ class BerandaPage extends GetView<HomeController> {
                 height: 15,
               ),
               Obx(
-                () => ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: transaksiController.latestTransaksi.length,
-                  itemBuilder: (context, index) {
-                    var transaksiData =
-                        transaksiController.latestTransaksi[index];
-                    final title = transaksiData['Keterangan'] != null
-                        ? transaksiData['Keterangan']
-                        : 'Data tidak tersedua';
-                    final nominal = transaksiData['nominal'] != null
-                        ? int.parse(transaksiData['nominal'].toString())
-                        : 0;
-                    final status = transaksiData['status'] != null
-                        ? transaksiData['status']
-                        : 'Data tidak tersedua';
-                    final tgl = transaksiData['created_at'] != null
-                        ? DateFormat('dd-MM-yyyy, HH:mm')
-                            .format(DateTime.parse(transaksiData['created_at']))
-                        : 'Data tidak tersedua';
+                () => transaksiController.latestTransaksi.isEmpty
+                    ? Text(
+                        "Data tidak ditemukan\nSilahkan tambah transaksi",
+                        textAlign: TextAlign.center,
+                        style: font_medium.copyWith(
+                          color: darkGreyColor,
+                        ),
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: transaksiController.latestTransaksi.length,
+                        itemBuilder: (context, index) {
+                          var transaksiData =
+                              transaksiController.latestTransaksi[index];
+                          final title = transaksiData['Keterangan'] != null
+                              ? transaksiData['Keterangan']
+                              : 'Data tidak tersedua';
+                          final nominal = transaksiData['nominal'] != null
+                              ? int.parse(transaksiData['nominal'].toString())
+                              : 0;
+                          final status = transaksiData['status'] != null
+                              ? transaksiData['status']
+                              : 'Data tidak tersedua';
+                          final tgl = transaksiData['created_at'] != null
+                              ? DateFormat('dd-MM-yyyy, HH:mm').format(
+                                  DateTime.parse(transaksiData['created_at']))
+                              : 'Data tidak tersedua';
 
-                    return TransaksiCard(
-                      title: title,
-                      nominal: nominal,
-                      status: status == 'pemasukan' ? true : false,
-                      tanggal: tgl,
-                    );
-                  },
-                ),
+                          return TransaksiCard(
+                            title: title,
+                            nominal: nominal,
+                            status: status == 'pemasukan' ? true : false,
+                            tanggal: tgl,
+                          );
+                        },
+                      ),
               ),
               const SizedBox(
                 height: 36,

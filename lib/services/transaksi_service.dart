@@ -6,7 +6,7 @@ import 'package:get_storage/get_storage.dart';
 class TransaksiService {
   final box = GetStorage();
 
-  Future<Map> get() async {
+  Future<List> get() async {
     String? token = box.read("token");
     var response = await Dio().get(
       "https://medit.kreatifsolusindo.id/api/transaction",
@@ -17,8 +17,10 @@ class TransaksiService {
         },
       ),
     );
-    Map obj = response.data;
-    return obj;
+    String jsonString = jsonEncode(response.data);
+    Map obj = jsonDecode(jsonString);
+    List data = obj["data"];
+    return data;
   }
 
   Future<List> getLatest() async {

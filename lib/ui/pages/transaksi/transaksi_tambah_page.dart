@@ -190,13 +190,26 @@ class TransaksiTambahPage extends StatelessWidget {
                         const SizedBox(
                           height: 16,
                         ),
-                        InputField(
-                          title: "Keterangan",
-                          hintText: "Isi deskripsi singkat",
-                          validator: Validator.required,
-                          onChange: (value) {
-                            controller.keterangan = value;
-                          },
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            InputField(
+                              title: "Keterangan",
+                              hintText: "Isi deskripsi singkat",
+                              validator: Validator.required,
+                              onChange: (value) {
+                                controller.keterangan = value;
+                              },
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              "Input Keterangan max 20 karakter",
+                              style: font_regular.copyWith(
+                                fontSize: 12,
+                                color: darkGreyColor,
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(
                           height: 48,

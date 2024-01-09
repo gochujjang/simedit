@@ -9,6 +9,7 @@ class TransaksiCard extends StatelessWidget {
   final String tanggal;
   final int nominal;
   final bool status;
+  final int maxCharacters = 20;
 
   const TransaksiCard({
     Key? key,
@@ -20,6 +21,10 @@ class TransaksiCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String truncatedTitle = title.length > maxCharacters
+        ? title.substring(0, maxCharacters) +
+            '...' // Display ellipsis if more than maxCharacters
+        : title;
     return Container(
       height: 83,
       width: double.infinity,
@@ -56,7 +61,9 @@ class TransaksiCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    truncatedTitle,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                     style: font_semiBold.copyWith(
                       fontSize: 14,
                     ),
