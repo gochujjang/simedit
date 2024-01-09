@@ -3,10 +3,10 @@ import 'package:SiMedit/controllers/transaksi_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:SiMedit/controllers/shared/format_currency.dart';
 import 'package:SiMedit/controllers/home_controller.dart';
 import 'package:SiMedit/theme.dart';
+import 'package:intl/intl.dart';
 
 import '../../widgets/card.dart';
 
@@ -15,6 +15,7 @@ class BerandaPage extends GetView<HomeController> {
 
   Future<void> _onRefresh() async {
     await transaksiController.doTotalUang();
+    await transaksiController.getTransaksi();
   }
 
   @override
@@ -51,33 +52,36 @@ class BerandaPage extends GetView<HomeController> {
               const SizedBox(
                 height: 15,
               ),
-              TransaksiCard(
-                title: "Makan diluar",
-                nominal: 20000,
-                status: false,
-                tanggal: '20-05-2023, 12:00',
-              ),
-              TransaksiCard(
-                title: "Paket Data",
-                nominal: 50000,
-                status: false,
-                tanggal: '20-11-2023, 08:45',
-              ),
-              TransaksiCard(
-                title: "Online Shopping",
-                nominal: 350000,
-                status: false,
-                tanggal: '15-11-2023, 14:30',
-              ),
-              TransaksiCard(
-                title: "Part-Time",
-                nominal: 1500000,
-                tanggal: '02-11-2023, 12:30',
-              ),
-              TransaksiCard(
-                title: "Uang Saku",
-                nominal: 2000000,
-                tanggal: '02-11-2023, 07:30',
+              Obx(
+                () => ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: transaksiController.latestTransaksi.length,
+                  itemBuilder: (context, index) {
+                    var transaksiData =
+                        transaksiController.latestTransaksi[index];
+                    final title = transaksiData['Keterangan'] != null
+                        ? transaksiData['Keterangan']
+                        : 'Data tidak tersedua';
+                    final nominal = transaksiData['nominal'] != null
+                        ? int.parse(transaksiData['nominal'].toString())
+                        : 0;
+                    final status = transaksiData['status'] != null
+                        ? transaksiData['status']
+                        : 'Data tidak tersedua';
+                    final tgl = transaksiData['created_at'] != null
+                        ? DateFormat('dd-MM-yyyy, HH:mm')
+                            .format(DateTime.parse(transaksiData['created_at']))
+                        : 'Data tidak tersedua';
+
+                    return TransaksiCard(
+                      title: title,
+                      nominal: nominal,
+                      status: status == 'pemasukan' ? true : false,
+                      tanggal: tgl,
+                    );
+                  },
+                ),
               ),
               const SizedBox(
                 height: 36,

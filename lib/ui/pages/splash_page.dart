@@ -4,7 +4,6 @@ import 'package:SiMedit/controllers/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/theme.dart';
-import 'package:SiMedit/ui/pages/onboarding_page.dart';
 
 class SplashPage extends GetView<SplashController> {
   final SplashController controller = Get.put(SplashController());

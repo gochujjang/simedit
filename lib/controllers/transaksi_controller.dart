@@ -8,7 +8,17 @@ class TransaksiController extends GetxController {
     doTotalUang();
     doIncome();
     doExpense();
+    getTransaksi();
     update();
+  }
+
+  RxList<dynamic> latestTransaksi = <dynamic>[].obs;
+  Future<void> getTransaksi() async {
+    try {
+      latestTransaksi.assignAll(await TransaksiService().getLatest());
+    } on Exception catch (err) {
+      print(err);
+    }
   }
 
   var totalUang = 0.obs;

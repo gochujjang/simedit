@@ -3,7 +3,6 @@ import 'package:SiMedit/controllers/shared/datepicker_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:SiMedit/controllers/transaksi_controller.dart';
 import 'package:SiMedit/theme.dart';
 import 'package:intl/intl.dart';
 

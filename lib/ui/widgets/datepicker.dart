@@ -42,7 +42,7 @@ class _QDatePickerState extends State<QDatePicker> {
     if (widget.value != null) {
       return DateFormat("d MMMM y", 'id_ID').format(widget.value!);
     }
-    return "-";
+    return "${DateFormat("d MMMM y", 'id_ID').format(DateTime.now())}";
   }
 
   getFormattedValue() {
@@ -50,7 +50,7 @@ class _QDatePickerState extends State<QDatePicker> {
     if (selectedValue != null) {
       return DateFormat("d MMMM y", 'id_ID').format(selectedValue!);
     }
-    return "-";
+    return "${DateFormat("d MMMM y", 'id_ID').format(DateTime.now())}";
   }
 
   @override

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -5,6 +7,21 @@ class TransaksiService {
   final box = GetStorage();
 
   Future<Map> get() async {
+    String? token = box.read("token");
+    var response = await Dio().get(
+      "https://medit.kreatifsolusindo.id/api/transaction",
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer $token",
+        },
+      ),
+    );
+    Map obj = response.data;
+    return obj;
+  }
+
+  Future<List> getLatest() async {
     String? token = box.read("token");
     var response = await Dio().get(
       "https://medit.kreatifsolusindo.id/api/latestTransaction",
@@ -15,8 +32,10 @@ class TransaksiService {
         },
       ),
     );
-    Map obj = response.data;
-    return obj;
+    String jsonString = jsonEncode(response.data);
+    Map obj = jsonDecode(jsonString);
+    List data = obj["data"];
+    return data;
   }
 
   Future<int> getTotalUang() async {
@@ -69,14 +88,14 @@ class TransaksiService {
 
   create({
     required String status,
-    required int nominal,
+    required String nominal,
     required String tanggal,
     required String keterangan,
   }) async {
     String? token = box.read("token");
     try {
       var response = await Dio().post(
-        "https://reqres.in/api/users",
+        "https://medit.kreatifsolusindo.id/api/transaction",
         options: Options(
           headers: {
             "Content-Type": "application/json",
@@ -86,15 +105,17 @@ class TransaksiService {
         data: {
           "status": status,
           "nominal": nominal,
-          "tanggal": tanggal,
-          "keterangan": keterangan,
+          "tgl": tanggal,
+          "Keterangan": keterangan,
         },
       );
       Map obj = response.data;
-
+      print("Request payload : $status, $nominal, $tanggal, $keterangan");
       print("Response OBJ = ${obj}");
+      return true;
     } on Exception catch (err) {
       print(err);
+      return false;
     }
   }
 }
