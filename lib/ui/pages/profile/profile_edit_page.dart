@@ -1,3 +1,5 @@
+import 'package:SiMedit/controllers/profile_controller.dart';
+import 'package:SiMedit/ui/widgets/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/theme.dart';
@@ -6,7 +8,14 @@ import 'package:SiMedit/ui/widgets/forms.dart';
 import '../../widgets/buttons.dart';
 
 class ProfileEditPage extends StatelessWidget {
-  const ProfileEditPage({super.key});
+  // const ProfileEditPage({super.key});
+  ProfileController controller = Get.put(ProfileController());
+
+  final Map? itemProfile;
+  ProfileEditPage({
+    Key? key,
+    this.itemProfile,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,41 +52,68 @@ class ProfileEditPage extends StatelessWidget {
                 themeShadow,
               ],
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // input username
-                InputField(
-                  title: 'Nama Lengkap',
-                  hintText: 'Masukkan nama anda...',
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                InputField(
-                  title: 'Username',
-                  hintText: 'Masukkan username...',
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                InputField(
-                  title: 'Email',
-                  hintText: 'Masukkan email...',
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                PrimaryButton(
-                  title: 'Perbarui Profile',
-                  onPressed: () {
-                    Get.back();
-                  },
-                ),
-              ],
+            child: Form(
+              key: controller.formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // input username
+                  InputField(
+                    title: 'Nama Lengkap',
+                    hintText: 'Masukkan nama anda...',
+                    validator: Validator.required,
+                    value: controller.name,
+                    onChange: (value) {
+                      controller.name = value;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  InputField(
+                    title: 'Username',
+                    hintText: 'Masukkan username...',
+                    validator: Validator.required,
+                    value: controller.username,
+                    onChange: (value) {
+                      controller.username = value;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  InputField(
+                    title: 'Email',
+                    hintText: 'Masukkan email...',
+                    validator: Validator.email,
+                    value: controller.email,
+                    onChange: (value) {
+                      controller.email = value;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  PrimaryButton(
+                    title: 'Perbarui Profile',
+                    onPressed: controller.isUpdatingProfile.value
+                        ? null
+                        : () {
+                            print("name : ${controller.name}");
+                            print("username : ${controller.username}");
+                            print("email : ${controller.email}");
+                            controller.updateProfile(
+                              name: controller.name!,
+                              email: controller.email!,
+                              username: controller.username!,
+                            );
+                          },
+                  ),
+                ],
+              ),
             ),
           ),
         ],

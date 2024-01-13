@@ -53,7 +53,7 @@ class TransaksiTambahController extends GetxController {
       transaksiController.getTransaksi();
 
       update();
-      Get.off(() => HomePage());
+      Get.off(() => HomePage(), arguments: 1);
     }
   }
 }

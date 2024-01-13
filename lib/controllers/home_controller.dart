@@ -1,6 +1,15 @@
+import 'package:SiMedit/controllers/profile_controller.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+  ProfileController profileController = Get.put(ProfileController());
+  @override
+  void onInit() {
+    super.onInit();
+    profileController.getProfiles();
+    update();
+  }
+
   var tabIndex = 0;
 
   void changeTabIndex(int index) {

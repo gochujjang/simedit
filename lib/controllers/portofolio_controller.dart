@@ -19,6 +19,7 @@ class PortofolioController extends GetxController {
   Future<void> getPortofolio() async {
     try {
       allPorto.assignAll(await PortoService().get());
+      update();
     } on Exception catch (err) {
       print(err);
     }
@@ -55,10 +56,10 @@ class PortofolioController extends GetxController {
         backgroundColor: greenColor,
       );
 
+      getPortofolio();
       doTotal();
-
       update();
-      Get.off(() => HomePage());
+      Get.off(() => HomePage(), arguments: 2);
     }
   }
 

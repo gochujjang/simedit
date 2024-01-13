@@ -15,6 +15,8 @@ class HomePage extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
+    controller.tabIndex = Get.arguments ?? 0;
+
     return GetBuilder<HomeController>(builder: (controller) {
       return Scaffold(
         body: IndexedStack(

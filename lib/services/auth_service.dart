@@ -23,10 +23,13 @@ class AuthService {
       );
       Map obj = response.data;
       token = obj["access_token"];
+      Map data = obj["data"];
       box.write("token", token);
+      box.write("data", data);
       print("Request payload : $username, $password");
-      print("return response : {$obj}");
+      print("Return data response : {$data}");
       print("Token saved in GetStorage: ${box.read("token")}");
+      print("Data saved in GetStorage: ${box.read("data")}");
       return true;
     } on Exception catch (_) {
       return false;

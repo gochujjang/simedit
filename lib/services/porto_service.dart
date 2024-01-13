@@ -24,6 +24,24 @@ class PortoService {
     return data;
   }
 
+  Future<List> getDropdown() async {
+    String? token = box.read("token");
+    var response = await Dio().get(
+      "https://medit.kreatifsolusindo.id/api/get-portofolio",
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer $token",
+        },
+      ),
+    );
+    String jsonString = jsonEncode(response.data);
+    Map obj = jsonDecode(jsonString);
+    List data = obj["data"];
+    print(data);
+    return data;
+  }
+
   Future<int> getTotalPorto() async {
     String? token = box.read("token");
     var response = await Dio().get(
@@ -35,8 +53,26 @@ class PortoService {
         },
       ),
     );
-    int obj = response.data;
-    return obj;
+    var obj = response.data;
+
+    if (obj is int) {
+      // If the data is already an integer, use it directly
+      return obj;
+    } else if (obj is String) {
+      // If the data is a string, try parsing it to an integer
+      try {
+        int total = int.parse(obj);
+        return total;
+      } catch (e) {
+        // Handle parsing errors, return 0 if unable to parse
+        print("Error parsing string to int: $e");
+        return 0;
+      }
+    } else {
+      // Handle other types of data, return 0 for unknown cases
+      print("Unknown data type: $obj");
+      return 0;
+    }
   }
 
   Future<int> getTotalTarget() async {
@@ -50,8 +86,26 @@ class PortoService {
         },
       ),
     );
-    int obj = response.data;
-    return obj;
+    var obj = response.data;
+
+    if (obj is int) {
+      // If the data is already an integer, use it directly
+      return obj;
+    } else if (obj is String) {
+      // If the data is a string, try parsing it to an integer
+      try {
+        int total = int.parse(obj);
+        return total;
+      } catch (e) {
+        // Handle parsing errors, return 0 if unable to parse
+        print("Error parsing string to int: $e");
+        return 0;
+      }
+    } else {
+      // Handle other types of data, return 0 for unknown cases
+      print("Unknown data type: $obj");
+      return 0;
+    }
   }
 
   createPorto({

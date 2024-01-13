@@ -1,3 +1,4 @@
+import 'package:SiMedit/controllers/portofolio_controller.dart';
 import 'package:SiMedit/controllers/profile_controller.dart';
 import 'package:SiMedit/controllers/transaksi_controller.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,12 @@ import '../../widgets/card.dart';
 
 class BerandaPage extends GetView<HomeController> {
   TransaksiController transaksiController = Get.put(TransaksiController());
+  PortofolioController portoController = Get.put(PortofolioController());
 
   Future<void> _onRefresh() async {
     await transaksiController.doTotalUang();
     await transaksiController.getTransaksi();
+    await portoController.getPortofolio();
   }
 
   @override
@@ -102,21 +105,39 @@ class BerandaPage extends GetView<HomeController> {
               const SizedBox(
                 height: 15,
               ),
-              MiniPortofolioCard(
-                title: 'Keyboard VortexSeries',
-                persen: 0.30,
-              ),
-              MiniPortofolioCard(
-                title: 'Deskmat Tenjin',
-                persen: 0.72,
-              ),
-              MiniPortofolioCard(
-                title: 'TWS baru',
-                persen: 0.10,
-              ),
-              MiniPortofolioCard(
-                title: 'Tiket Konser JKT48',
-                persen: 0.90,
+              Obx(
+                () => portoController.allPorto.isEmpty
+                    ? SizedBox(
+                        height: MediaQuery.of(context).size.height - 500,
+                        child: Text(
+                          "Anda belum menambahkan data\nSilahkan tambah portofolio",
+                          textAlign: TextAlign.center,
+                          style: font_medium.copyWith(
+                            color: darkGreyColor,
+                          ),
+                        ),
+                      )
+                    :
+                    //list view mini porto
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: portoController.allPorto.length,
+                        itemBuilder: (context, index) {
+                          var dataPorto = portoController.allPorto[index];
+                          final title = dataPorto['title'] != null
+                              ? dataPorto['title']
+                              : 'Data tidak tersedia';
+                          final persen = dataPorto['persentase'] != null
+                              ? double.parse(dataPorto['persentase'])
+                              : 0.0;
+
+                          return MiniPortofolioCard(
+                            title: title,
+                            persen: persen,
+                          );
+                        },
+                      ),
               ),
               const SizedBox(
                 height: 55,

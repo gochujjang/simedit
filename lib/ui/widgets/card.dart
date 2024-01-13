@@ -194,7 +194,7 @@ class MiniPortofolioCard extends StatelessWidget {
               Text(title, style: font_semiBold),
               const Spacer(),
               Text(
-                '${(persen * 100).round()}%',
+                '${(persen).round()}%',
                 style: font_semiBold.copyWith(color: greenColor),
               ),
             ],
@@ -203,7 +203,7 @@ class MiniPortofolioCard extends StatelessWidget {
             height: 10,
           ),
           LinearProgressIndicator(
-            value: persen,
+            value: persen / 100,
             valueColor: AlwaysStoppedAnimation(greenColor),
             backgroundColor: bgColor,
             borderRadius: BorderRadius.circular(30),

@@ -1,7 +1,10 @@
 import 'package:SiMedit/controllers/pilih_portofolio_controller.dart';
+import 'package:SiMedit/controllers/portofolio_tambah_controller.dart';
 import 'package:SiMedit/controllers/transaksi_tambah_controller.dart';
 import 'package:SiMedit/theme.dart';
+import 'package:SiMedit/ui/widgets/dropdown.dart';
 import 'package:SiMedit/ui/widgets/forms.dart';
+import 'package:SiMedit/ui/widgets/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,10 +12,10 @@ import '../home_page.dart';
 import '../../widgets/buttons.dart';
 
 class PortofolioTransaksiPage extends StatelessWidget {
-  final TransaksiTambahController statusController =
-      TransaksiTambahController();
-  final PilihPortofolioController portofolioListDropdown =
-      Get.put(PilihPortofolioController());
+  final PortofolioTambahController controller =
+      Get.put(PortofolioTambahController());
+  // final PilihPortofolioController portofolioListDropdown =
+  //     Get.put(PilihPortofolioController());
 
   final List<String> portofolioList = [
     "Keyboard VortexSeries",
@@ -20,6 +23,7 @@ class PortofolioTransaksiPage extends StatelessWidget {
     "TWS baru",
     "Teater JKT48",
   ].toSet().toList();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +86,8 @@ class PortofolioTransaksiPage extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              statusController.isStatusActive.value = false;
+                              controller.status = 'pemasukan';
+                              controller.isStatusActive.value = false;
                             },
                             child: Obx(() => Container(
                                   width: 156,
@@ -96,15 +101,13 @@ class PortofolioTransaksiPage extends StatelessWidget {
                                   ),
                                   decoration: BoxDecoration(
                                     color:
-                                        statusController.isStatusActive.value ==
-                                                false
+                                        controller.isStatusActive.value == false
                                             ? blueColor
                                             : Colors.transparent,
                                     borderRadius: BorderRadius.circular(16),
                                     border: Border.all(
                                       color: blueColor,
-                                      width: statusController
-                                                  .isStatusActive.value ==
+                                      width: controller.isStatusActive.value ==
                                               false
                                           ? 0
                                           : 3,
@@ -116,11 +119,11 @@ class PortofolioTransaksiPage extends StatelessWidget {
                                       'Pemasukan',
                                       style: font_semiBold.copyWith(
                                         fontSize: 14,
-                                        color: statusController
-                                                    .isStatusActive.value ==
-                                                false
-                                            ? whiteColor
-                                            : blueColor,
+                                        color:
+                                            controller.isStatusActive.value ==
+                                                    false
+                                                ? whiteColor
+                                                : blueColor,
                                       ),
                                     ),
                                   ),
@@ -128,7 +131,9 @@ class PortofolioTransaksiPage extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              statusController.isStatusActive.value = true;
+                              controller.status = 'pengeluaran';
+
+                              controller.isStatusActive.value = true;
                             },
                             child: Obx(() => Container(
                                   width: 156,
@@ -139,14 +144,12 @@ class PortofolioTransaksiPage extends StatelessWidget {
                                   ),
                                   decoration: BoxDecoration(
                                     color:
-                                        statusController.isStatusActive.value ==
-                                                true
+                                        controller.isStatusActive.value == true
                                             ? blueColor
                                             : Colors.transparent,
                                     borderRadius: BorderRadius.circular(16),
                                     border: Border.all(
-                                      color: statusController
-                                                  .isStatusActive.value ==
+                                      color: controller.isStatusActive.value ==
                                               true
                                           ? Colors.transparent
                                           : blueColor,
@@ -158,11 +161,11 @@ class PortofolioTransaksiPage extends StatelessWidget {
                                     child: Text(
                                       'Pengeluaran',
                                       style: font_semiBold.copyWith(
-                                        color: statusController
-                                                    .isStatusActive.value ==
-                                                true
-                                            ? whiteColor
-                                            : blueColor,
+                                        color:
+                                            controller.isStatusActive.value ==
+                                                    true
+                                                ? whiteColor
+                                                : blueColor,
                                         fontSize: 14,
                                       ),
                                     ),
@@ -174,13 +177,37 @@ class PortofolioTransaksiPage extends StatelessWidget {
                       const SizedBox(
                         height: 36,
                       ),
-                      InputFieldNumber(
-                        title: "Nominal",
-                        hintText: "Masukkan nominal..",
+                      Form(
+                        key: controller.formKey,
+                        child: Column(
+                          children: [
+                            InputFieldNumber(
+                              title: "Nominal",
+                              hintText: "Masukkan nominal..",
+                              validator: Validator.required,
+                              onChange: (value) {
+                                controller.nominal = value;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            QDropdownField(
+                              label: "Select Porto",
+                              value: controller.porto_id,
+                              onChanged: (dynamic value, String? label) {
+                                controller.porto_id = value.toString();
+                                print("Porto: $value");
+                                print("Title: $label");
+                                print("ID: ${controller.porto_id}");
+                              },
+                              items: controller
+                                  .listUserPorto, // Pass listUserPorto directly
+                            ),
+                          ],
+                        ),
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+
                       //dropdown
                       Container(
                         padding: const EdgeInsets.only(
@@ -214,13 +241,13 @@ class PortofolioTransaksiPage extends StatelessWidget {
                               ),
                               isExpanded: true,
                               underline: SizedBox(),
-                              value: portofolioListDropdown
+                              value: controller
                                           .selectedItem.value ==
                                       ""
                                   ? null
-                                  : portofolioListDropdown.selectedItem.value,
+                                  : controller.selectedItem.value,
                               onChanged: (newValue) {
-                                portofolioListDropdown
+                                controller
                                     .updateSelectedItem(newValue.toString());
                               },
                               items:
@@ -245,7 +272,13 @@ class PortofolioTransaksiPage extends StatelessWidget {
                       PrimaryIconButton(
                         title: "Tambah Transaksi",
                         onPressed: () {
-                          Get.off(() => HomePage(), arguments: {'tabIndex': 1});
+                          final formattedNominal =
+                              controller.nominal?.replaceAll(".", "");
+                          controller.nominal = formattedNominal;
+                          print("Status : ${controller.status}");
+                          print("Nominal : ${controller.nominal}");
+                          print("Porto : ${controller.porto_id}");
+                          // Get.off(() => HomePage(), arguments: {'tabIndex': 1});
                         },
                       ),
                     ],
