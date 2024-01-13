@@ -1,3 +1,4 @@
+import 'package:SiMedit/ui/widgets/dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -60,57 +61,32 @@ class TransaksiPage extends GetView<TransaksiController> {
                     children: [
                       Container(
                         padding: const EdgeInsets.only(
-                          top: 66,
+                          top: 45,
                         ),
-                        child: Obx(
-                          () => Container(
-                            width: double.infinity,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: whiteColor,
-                              borderRadius: BorderRadius.circular(16),
-                              border: Border.all(
-                                color: greyColor,
-                              ),
-                            ),
-                            child: DropdownButton<String>(
-                              hint: Text(
-                                'Rentang Waktu',
-                                style: font_regular.copyWith(
-                                  color: darkGreyColor,
-                                  fontSize: 14,
-                                ),
-                              ),
-                              padding: const EdgeInsets.only(
-                                top: 12,
-                                bottom: 12,
-                                left: 22,
-                                right: 22,
-                              ),
-                              isExpanded: true,
-                              underline: SizedBox(),
-                              value: dropdownListController
-                                          .selectedItem.value ==
-                                      ""
-                                  ? null
-                                  : dropdownListController.selectedItem.value,
-                              onChanged: (newValue) {
-                                dropdownListController
-                                    .updateSelectedItem(newValue.toString());
-                              },
-                              items: dropdownList.map<DropdownMenuItem<String>>(
-                                (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(
-                                      value,
-                                      style: font_regular,
-                                    ),
-                                  );
-                                },
-                              ).toList(),
-                            ),
-                          ),
+                        child: QDropdownField(
+                          label: "",
+                          value: "Semua transaksi",
+                          items: [
+                            {
+                              "label": "Semua transaksi",
+                              "value": "Semua transaksi",
+                            },
+                            {
+                              "label": "Hari ini",
+                              "value": "Hari ini",
+                            },
+                            {
+                              "label": "Bulan ini",
+                              "value": "Bulan ini",
+                            },
+                            // Add more items as needed
+                          ],
+                          onChanged: (value, label) {
+                            controller.filter = value;
+                            controller.filterTransactions();
+                            print(controller.filter);
+                            print(controller.filteredTransaksi.value);
+                          },
                         ),
                       ),
                       const SizedBox(
@@ -132,10 +108,10 @@ class TransaksiPage extends GetView<TransaksiController> {
                             : ListView.builder(
                                 shrinkWrap: true,
                                 physics: NeverScrollableScrollPhysics(),
-                                itemCount: controller.allTransaksi.length,
+                                itemCount: controller.filteredTransaksi.length,
                                 itemBuilder: (context, index) {
                                   var transaksiData =
-                                      controller.allTransaksi[index];
+                                      controller.filteredTransaksi[index];
                                   final title =
                                       transaksiData['Keterangan'] != null
                                           ? transaksiData['Keterangan']
@@ -180,3 +156,52 @@ class TransaksiPage extends GetView<TransaksiController> {
     );
   }
 }
+
+// Container(
+                          //   width: double.infinity,
+                          //   height: 50,
+                          //   decoration: BoxDecoration(
+                          //     color: whiteColor,
+                          //     borderRadius: BorderRadius.circular(16),
+                          //     border: Border.all(
+                          //       color: greyColor,
+                          //     ),
+                          //   ),
+                          //   child: DropdownButton<String>(
+                          //     hint: Text(
+                          //       'Rentang Waktu',
+                          //       style: font_regular.copyWith(
+                          //         color: darkGreyColor,
+                          //         fontSize: 14,
+                          //       ),
+                          //     ),
+                          //     padding: const EdgeInsets.only(
+                          //       top: 12,
+                          //       bottom: 12,
+                          //       left: 22,
+                          //       right: 22,
+                          //     ),
+                          //     isExpanded: true,
+                          //     underline: SizedBox(),
+                          //     value: dropdownListController
+                          //                 .selectedItem.value ==
+                          //             ""
+                          //         ? null
+                          //         : dropdownListController.selectedItem.value,
+                          //     onChanged: (newValue) {
+                          //       dropdownListController
+                          //           .updateSelectedItem(newValue.toString());
+                          //     },
+                          //     items: dropdownList.map<DropdownMenuItem<String>>(
+                          //       (String value) {
+                          //         return DropdownMenuItem<String>(
+                          //           value: value,
+                          //           child: Text(
+                          //             value,
+                          //             style: font_regular,
+                          //           ),
+                          //         );
+                          //       },
+                          //     ).toList(),
+                          //   ),
+                          // ),

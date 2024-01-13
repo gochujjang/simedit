@@ -97,8 +97,6 @@ class LoginPage extends GetView<LoginController> {
                   PrimaryButton(
                     title: 'Login',
                     onPressed: () {
-                      debugPrint("Username : ${usernameController.text}");
-                      debugPrint("Password : ${passwordController.text}");
                       controller.onLogin();
                     },
                   ),

@@ -17,13 +17,6 @@ class PortofolioTransaksiPage extends StatelessWidget {
   final PilihPortofolioController portofolioListDropdown =
       Get.put(PilihPortofolioController());
 
-  final List<String> portofolioList = [
-    "Keyboard VortexSeries",
-    "Deskmat Tenjin",
-    "TWS baru",
-    "Teater JKT48",
-  ].toSet().toList();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +25,7 @@ class PortofolioTransaksiPage extends StatelessWidget {
         iconTheme: IconThemeData(color: whiteColor),
         leading: IconButton(
           onPressed: () {
-            Get.back();
+            Get.off(() => HomePage(), arguments: 2);
           },
           icon: Image.asset(
             'assets/ic_back.png',
@@ -209,7 +202,7 @@ class PortofolioTransaksiPage extends StatelessWidget {
                                     "value": item["value"]?.toString() ?? "",
                                   };
                                 }).toList(),
-                                value: controller.porto_id ?? "-",
+                                value: "-",
                                 onChanged: (value, label) {
                                   controller.porto_id = value;
                                 },

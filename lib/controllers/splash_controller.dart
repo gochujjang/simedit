@@ -22,7 +22,7 @@ class SplashController extends GetxController {
       Future.delayed(
         const Duration(seconds: 5),
         () {
-          Get.off(HomePage());
+          Get.offAll(() => HomePage(), arguments: 0);
         },
       );
     } else {

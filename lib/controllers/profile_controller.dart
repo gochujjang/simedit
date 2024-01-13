@@ -35,7 +35,6 @@ class ProfileController extends GetxController {
         backgroundColor: greenColor,
       );
       box.erase();
-
       // Navigate to the login page or perform other actions
       Get.offAll(() => LoginPage());
     } else {
