@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:SiMedit/controllers/bindings/home_binding.dart';
 import 'package:SiMedit/theme.dart';
-import 'package:SiMedit/ui/pages/home_page.dart';
 import 'package:SiMedit/ui/pages/splash_page.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -19,12 +17,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setSystemUIOverlayStyle(
-    //   SystemUiOverlayStyle(
-    //     statusBarColor: Colors.transparent,
-    //     statusBarIconBrightness: Brightness.dark,
-    //   ),
-    // );
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

@@ -42,7 +42,6 @@ class ProfileService {
         },
       );
       Map obj = response.data;
-      print("Response obj : ${obj}");
     } on Exception catch (err) {
       print(err);
     }
@@ -71,12 +70,7 @@ class ProfileService {
         },
       );
       Map obj = response.data;
-      print(
-          "Request payload: $password, $password_confirmation, $current_password");
-      print("Response data: ${obj["msg"]}");
-      print("Full Response: $response");
 
-      print("Status Code: ${response.statusCode}");
       return obj["msg"];
     } on Exception catch (err) {
       print(err);

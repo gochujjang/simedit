@@ -133,8 +133,7 @@ class PortoService {
         },
       );
       Map obj = response.data;
-      print("Request payload : $title, $target");
-      print("Response OBJ = ${obj}");
+
       return true;
     } on Exception catch (err) {
       print(err);
@@ -164,7 +163,6 @@ class PortoService {
         },
       );
       Map obj = response.data;
-      print("Response OBJ = ${obj}");
       return true;
     } on Exception catch (err) {
       print(err);

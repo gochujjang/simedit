@@ -102,9 +102,6 @@ class ProfileEditPage extends StatelessWidget {
                     onPressed: controller.isUpdatingProfile.value
                         ? null
                         : () {
-                            print("name : ${controller.name}");
-                            print("username : ${controller.username}");
-                            print("email : ${controller.email}");
                             controller.updateProfile(
                               name: controller.name!,
                               email: controller.email!,

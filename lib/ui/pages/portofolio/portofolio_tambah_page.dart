@@ -67,8 +67,7 @@ class PortofolioTambahPage extends StatelessWidget {
                   final formattedNominal =
                       controller.target?.replaceAll(".", "");
                   controller.target = formattedNominal;
-                  print("title : ${controller.title}");
-                  print("target : ${controller.target}");
+
                   controller.doTambahPorto();
                   // Get.back();
                 },
@@ -80,20 +79,3 @@ class PortofolioTambahPage extends StatelessWidget {
     );
   }
 }
-
-          // Container(
-          //   padding: EdgeInsets.all(22),
-          //   decoration: BoxDecoration(
-          //     color: whiteColor,
-          //     borderRadius: BorderRadius.circular(20),
-          //     boxShadow: [
-          //       themeShadow,
-          //     ],
-          //   ),
-          //   child: Column(
-          //     crossAxisAlignment: CrossAxisAlignment.start,
-          //     children: [
-          //       // input username
-          //     ],
-          //   ),
-          // ),

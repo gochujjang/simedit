@@ -17,7 +17,7 @@ class AuthService {
           },
         ),
         data: {
-          "username": username, //     dadang
+          "username": username,
           "password": password,
         },
       );
@@ -26,10 +26,6 @@ class AuthService {
       Map data = obj["data"];
       box.write("token", token);
       box.write("data", data);
-      print("Request payload : $username, $password");
-      print("Return data response : {$data}");
-      print("Token saved in GetStorage: ${box.read("token")}");
-      print("Data saved in GetStorage: ${box.read("data")}");
       return true;
     } on Exception catch (_) {
       return false;

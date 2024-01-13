@@ -112,8 +112,6 @@ class TransaksiService {
         },
       );
       Map obj = response.data;
-      print("Request payload : $status, $nominal, $tanggal, $keterangan");
-      print("Response OBJ = ${obj}");
       return true;
     } on Exception catch (err) {
       print(err);

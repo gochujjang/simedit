@@ -211,65 +211,6 @@ class PortofolioTransaksiPage extends StatelessWidget {
                           ],
                         ),
                       ),
-
-                      //dropdown
-                      // Container(
-                      //   padding: const EdgeInsets.only(
-                      //     top: 0,
-                      //   ),
-                      //   child: Obx(
-                      //     () => Container(
-                      //       width: double.infinity,
-                      //       height: 50,
-                      //       decoration: BoxDecoration(
-                      //         color: whiteColor,
-                      //         borderRadius: BorderRadius.circular(16),
-                      //         border: Border.all(
-                      //           color: greyColor,
-                      //         ),
-                      //       ),
-                      //       child: DropdownButton<String>(
-                      //         hint: Text(
-                      //           'Pilih Portofolio',
-                      //           style: font_regular.copyWith(
-                      //             color: darkGreyColor,
-                      //             fontSize: 14,
-                      //             fontWeight: regular,
-                      //           ),
-                      //         ),
-                      //         padding: const EdgeInsets.only(
-                      //           top: 12,
-                      //           bottom: 12,
-                      //           left: 22,
-                      //           right: 22,
-                      //         ),
-                      //         isExpanded: true,
-                      //         underline: SizedBox(),
-                      //         value: portofolioListDropdown
-                      //                     .selectedItem.value ==
-                      //                 ""
-                      //             ? null
-                      //             : portofolioListDropdown.selectedItem.value,
-                      //         onChanged: (newValue) {
-                      //           portofolioListDropdown
-                      //               .updateSelectedItem(newValue.toString());
-                      //         },
-                      //         items:
-                      //             portofolioList.map<DropdownMenuItem<String>>(
-                      //           (String value) {
-                      //             return DropdownMenuItem<String>(
-                      //               value: value,
-                      //               child: Text(
-                      //                 value,
-                      //                 style: font_regular,
-                      //               ),
-                      //             );
-                      //           },
-                      //         ).toList(),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
                       const SizedBox(
                         height: 48,
                       ),
@@ -279,11 +220,8 @@ class PortofolioTransaksiPage extends StatelessWidget {
                           final formattedNominal =
                               controller.nominal?.replaceAll(".", "");
                           controller.nominal = formattedNominal;
-                          print("Status : ${controller.status}");
-                          print("Nominal : ${controller.nominal}");
-                          print("Porto : ${controller.porto_id}");
+
                           controller.doTambahTransaksi();
-                          // Get.off(() => HomePage(), arguments: {'tabIndex': 1});
                         },
                       ),
                     ],

@@ -41,7 +41,6 @@ class LoginController extends GetxController {
         colorText: whiteColor,
         backgroundColor: greenColor,
       );
-      print("login berhasil");
       Get.offAll(() => HomePage(), arguments:0);
     }
   }

@@ -116,10 +116,6 @@ class RegisterPage extends GetView<RegisterController> {
                   PrimaryButton(
                     title: 'Daftar',
                     onPressed: () {
-                      debugPrint("Email : ${controller.email}");
-                      debugPrint("name : ${controller.name}");
-                      debugPrint("username : ${controller.username}");
-                      debugPrint("password : ${controller.password}");
                       controller.doRegister();
                     },
                   ),

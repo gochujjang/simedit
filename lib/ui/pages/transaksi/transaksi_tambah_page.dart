@@ -225,10 +225,6 @@ class TransaksiTambahPage extends StatelessWidget {
                             );
                             controller.tanggal = formattedTanggal;
                             controller.nominal = formattedNominal;
-                            print("Status : ${controller.status}");
-                            print("Nominal : ${formattedNominal}");
-                            print("Tanggal : ${controller.tanggal}");
-                            print("Keterangan : ${controller.keterangan}");
                             controller.doTambahTransaksi();
                             // Get.back();
                           },

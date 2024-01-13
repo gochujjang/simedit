@@ -100,13 +100,6 @@ class ProfileResetPage extends StatelessWidget {
                     onPressed: controller.isUpdatingPassword.value
                         ? null
                         : () {
-                            // print("name : ${controller.name}");
-                            print("1password: ${controller.password}");
-                            print(
-                                "1password_confirmation: ${controller.password_confirmation}");
-                            print(
-                                "1current_password: ${controller.current_password}");
-
                             controller.updatePassword();
                           },
                   ),
