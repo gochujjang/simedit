@@ -20,7 +20,6 @@ class PortoService {
     String jsonString = jsonEncode(response.data);
     Map obj = jsonDecode(jsonString);
     List data = obj["data"];
-    print(data);
     return data;
   }
 
@@ -144,14 +143,14 @@ class PortoService {
   }
 
   tambah({
+    required String nominal,
+    required String porto_id,
     required String status,
-    required int nominal,
-    required String porto,
   }) async {
     String? token = box.read("token");
     try {
       var response = await Dio().post(
-        "https://reqres.in/api/users",
+        "https://medit.kreatifsolusindo.id/api/portofolio-transaction",
         options: Options(
           headers: {
             "Content-Type": "application/json",
@@ -159,15 +158,17 @@ class PortoService {
           },
         ),
         data: {
-          "status": status,
           "nominal": nominal,
-          "porto": porto,
+          "porto_id": porto_id,
+          "status": status,
         },
       );
       Map obj = response.data;
       print("Response OBJ = ${obj}");
+      return true;
     } on Exception catch (err) {
       print(err);
+      return false;
     }
   }
 }

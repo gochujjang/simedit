@@ -289,6 +289,7 @@ class PortofolioTransaksiPage extends StatelessWidget {
                           print("Status : ${controller.status}");
                           print("Nominal : ${controller.nominal}");
                           print("Porto : ${controller.porto_id}");
+                          controller.doTambahTransaksi();
                           // Get.off(() => HomePage(), arguments: {'tabIndex': 1});
                         },
                       ),
