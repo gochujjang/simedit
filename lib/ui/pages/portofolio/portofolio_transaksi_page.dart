@@ -1,4 +1,5 @@
 import 'package:SiMedit/controllers/pilih_portofolio_controller.dart';
+import 'package:SiMedit/controllers/portofolio_controller.dart';
 import 'package:SiMedit/controllers/portofolio_tambah_controller.dart';
 import 'package:SiMedit/controllers/transaksi_tambah_controller.dart';
 import 'package:SiMedit/theme.dart';
@@ -16,6 +17,8 @@ class PortofolioTransaksiPage extends StatelessWidget {
       Get.put(PortofolioTambahController());
   final PilihPortofolioController portofolioListDropdown =
       Get.put(PilihPortofolioController());
+
+  final PortofolioController portoController = Get.put(PortofolioController());
 
   @override
   Widget build(BuildContext context) {
@@ -216,12 +219,14 @@ class PortofolioTransaksiPage extends StatelessWidget {
                       ),
                       PrimaryIconButton(
                         title: "Tambah Transaksi",
-                        onPressed: () {
+                        onPressed: () async {
                           final formattedNominal =
                               controller.nominal?.replaceAll(".", "");
                           controller.nominal = formattedNominal;
 
-                          controller.doTambahTransaksi();
+                          await controller.doTambahTransaksi();
+                          await portoController.getPortofolio();
+                          await portoController.doTotal();
                         },
                       ),
                     ],

@@ -1,3 +1,4 @@
+import 'package:SiMedit/controllers/portofolio_tambah_controller.dart';
 import 'package:SiMedit/services/porto_service.dart';
 import 'package:SiMedit/theme.dart';
 import 'package:SiMedit/ui/pages/home_page.dart';
@@ -6,12 +7,14 @@ import 'package:get/get.dart';
 
 class PortofolioController extends GetxController {
   final formKey = GlobalKey<FormState>();
-
+  PortofolioTambahController portoAddController =
+      Get.put(PortofolioTambahController());
   @override
-  void onInit() async {
+  void onInit() {
     super.onInit();
     getPortofolio();
     doTotal();
+    portoAddController.getListPorto();
     update();
   }
 
@@ -56,8 +59,11 @@ class PortofolioController extends GetxController {
         backgroundColor: greenColor,
       );
 
-      getPortofolio();
+      await getPortofolio(); // Wait for getPortofolio to complete
+      await portoAddController
+          .getListPorto(); // Wait for getListPorto to complete
       doTotal();
+
       update();
       Get.off(() => HomePage(), arguments: 2);
     }

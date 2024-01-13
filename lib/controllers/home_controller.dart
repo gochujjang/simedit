@@ -6,14 +6,14 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   ProfileController profileController = Get.put(ProfileController());
   PortofolioController portofolioController = Get.put(PortofolioController());
-  PortofolioTambahController portoAddController =
-      Get.put(PortofolioTambahController());
+  // PortofolioTambahController portoAddController =
+  //     Get.put(PortofolioTambahController());
   @override
   void onInit() {
     super.onInit();
 
     profileController.getProfiles();
-    portoAddController.getListPorto();
+    // portoAddController.getListPorto();
     portofolioController.getPortofolio();
     update();
   }

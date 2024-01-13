@@ -1,3 +1,4 @@
+import 'package:SiMedit/controllers/portofolio_tambah_controller.dart';
 import 'package:SiMedit/ui/pages/portofolio/portofolio_tambah_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,10 +11,12 @@ import '../../widgets/buttons.dart';
 
 class PortofolioPage extends GetView<PortofolioController> {
   PortofolioController controller = Get.put(PortofolioController());
-
+  PortofolioTambahController portoAddController =
+      Get.put(PortofolioTambahController());
   Future<void> _onRefresh() async {
     await controller.doTotal();
     await controller.getPortofolio();
+    await portoAddController.getListPorto();
   }
 
   @override
@@ -97,6 +100,7 @@ class PortofolioPage extends GetView<PortofolioController> {
                         color: bgColor,
                       ),
                       child: Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           const SizedBox(
                             height: 24,
@@ -160,12 +164,12 @@ class PortofolioPage extends GetView<PortofolioController> {
                                   ),
                           ),
                           const SizedBox(
-                            height: 100,
+                            height: 250,
                           ),
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ],

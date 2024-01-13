@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PortofolioTambahController extends GetxController {
-  PortofolioController portoController = Get.put(PortofolioController());
-  final PortoService _portoService = PortoService();
+  // PortofolioController portoController = Get.put(PortofolioController());
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -71,8 +70,8 @@ class PortofolioTambahController extends GetxController {
         backgroundColor: greenColor,
       );
 
-      portoController.getPortofolio();
-      portoController.doTotal();
+      // portoController.getPortofolio();
+      // portoController.doTotal();
 
       update();
       Get.off(() => HomePage(), arguments: 2);
