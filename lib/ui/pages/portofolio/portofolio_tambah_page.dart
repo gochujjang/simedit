@@ -1,3 +1,5 @@
+import 'package:SiMedit/controllers/portofolio_controller.dart';
+import 'package:SiMedit/ui/widgets/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -5,7 +7,8 @@ import '../../widgets/buttons.dart';
 import '../../widgets/forms.dart';
 
 class PortofolioTambahPage extends StatelessWidget {
-  const PortofolioTambahPage({super.key});
+  // const PortofolioTambahPage({super.key});
+  PortofolioController controller = Get.put(PortofolioController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,34 +28,59 @@ class PortofolioTambahPage extends StatelessWidget {
           'Tambah Portofolio',
         ),
       ),
-      body: ListView(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(
           horizontal: 24,
         ),
-        children: [
-          const SizedBox(
-            height: 30,
+        child: Form(
+          key: controller.formKey,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              InputField(
+                title: 'Nama Portofolio',
+                hintText: 'Masukkan tujuan portofolio..',
+                validator: Validator.required,
+                onChange: (value) {
+                  controller.title = value;
+                },
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              InputFieldNumber(
+                title: 'Total Target',
+                hintText: 'Masukkan total target..',
+                validator: Validator.required,
+                onChange: (value) {
+                  controller.target = value;
+                },
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              PrimaryIconButton(
+                title: 'Tambah Portofolio',
+                onPressed: () {
+                  final formattedNominal =
+                      controller.target?.replaceAll(".", "");
+                  controller.target = formattedNominal;
+                  print("title : ${controller.title}");
+                  print("target : ${controller.target}");
+                  controller.doTambahPorto();
+                  // Get.back();
+                },
+              ),
+            ],
           ),
-          InputField(
-            title: 'Nama Portofolio',
-            hintText: 'Masukkan tujuan portofolio..',
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          InputFieldNumber(
-            title: 'Total Target',
-            hintText: 'Masukkan total target..',
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          PrimaryIconButton(
-            title: 'Tambah Portofolio',
-            onPressed: () {
-              Get.back();
-            },
-          ),
+        ),
+      ),
+    );
+  }
+}
+
           // Container(
           //   padding: EdgeInsets.all(22),
           //   decoration: BoxDecoration(
@@ -69,8 +97,3 @@ class PortofolioTambahPage extends StatelessWidget {
           //     ],
           //   ),
           // ),
-        ],
-      ),
-    );
-  }
-}

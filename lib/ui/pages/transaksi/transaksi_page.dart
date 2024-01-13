@@ -139,7 +139,7 @@ class TransaksiPage extends GetView<TransaksiController> {
                                   final title =
                                       transaksiData['Keterangan'] != null
                                           ? transaksiData['Keterangan']
-                                          : 'Data tidak tersedua';
+                                          : 'Data tidak tersedia';
                                   final nominal = transaksiData['nominal'] !=
                                           null
                                       ? int.parse(

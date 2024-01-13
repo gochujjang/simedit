@@ -57,12 +57,12 @@ class ProfilePage extends GetView<ProfileController> {
                 const SizedBox(
                   height: 16,
                 ),
-                Text(
-                  '${profile["name"]}',
-                  style: font_semiBold.copyWith(
-                    fontSize: 16,
-                  ),
-                ),
+                Obx(() => Text(
+                      '${profile["name"]}',
+                      style: font_semiBold.copyWith(
+                        fontSize: 16,
+                      ),
+                    )),
                 const SizedBox(
                   height: 32,
                 ),

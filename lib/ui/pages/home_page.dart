@@ -11,8 +11,8 @@ import 'package:SiMedit/ui/pages/profile/profile_page.dart';
 import 'package:SiMedit/ui/pages/transaksi/transaksi_page.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
+  // const HomePage({super.key});
+  final HomeController controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(builder: (controller) {

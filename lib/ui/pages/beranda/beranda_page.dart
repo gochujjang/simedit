@@ -78,16 +78,14 @@ class BerandaPage extends GetView<HomeController> {
                           final status = transaksiData['status'] != null
                               ? transaksiData['status']
                               : 'Data tidak tersedua';
-                          final tgl = transaksiData['created_at'] != null
-                              ? DateFormat('dd-MM-yyyy, HH:mm').format(
-                                  DateTime.parse(transaksiData['created_at']))
-                              : 'Data tidak tersedua';
+                          final utcTime = transaksiData['created_at'];
+                          final jakartaTime = _convertUtcToJakartaTime(utcTime);
 
                           return TransaksiCard(
                             title: title,
                             nominal: nominal,
                             status: status == 'pemasukan' ? true : false,
-                            tanggal: tgl,
+                            tanggal: jakartaTime,
                           );
                         },
                       ),
@@ -128,6 +126,12 @@ class BerandaPage extends GetView<HomeController> {
         ),
       ),
     );
+  }
+
+  String _convertUtcToJakartaTime(String utcTime) {
+    DateTime dateTime = DateTime.parse(utcTime);
+    DateTime jakartaTime = dateTime.toUtc().add(Duration(hours: 7));
+    return DateFormat('dd-MM-yyyy, HH:mm').format(jakartaTime);
   }
 
   Widget buildProfile() {
