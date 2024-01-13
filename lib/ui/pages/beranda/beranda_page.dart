@@ -81,14 +81,23 @@ class BerandaPage extends GetView<HomeController> {
                           final status = transaksiData['status'] != null
                               ? transaksiData['status']
                               : 'Data tidak tersedua';
-                          final utcTime = transaksiData['created_at'];
-                          final jakartaTime = _convertUtcToJakartaTime(utcTime);
+                          final tgl = transaksiData['tgl'] != null
+                              ? DateFormat('dd-MM-yyyy')
+                                  .format(DateTime.parse(transaksiData['tgl']))
+                              : 'Data tidak tersedua';
+                          final jam = transaksiData['created_at'] != null
+                              ? DateFormat('HH:mm').format(
+                                  DateTime.parse(transaksiData['created_at'])
+                                      .toLocal(),
+                                )
+                              : 'null';
 
                           return TransaksiCard(
                             title: title,
                             nominal: nominal,
                             status: status == 'pemasukan' ? true : false,
-                            tanggal: jakartaTime,
+                            tanggal: tgl,
+                            jam: jam,
                           );
                         },
                       ),

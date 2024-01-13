@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class TransaksiCard extends StatelessWidget {
   final String title;
   final String tanggal;
+  final String jam;
   final int nominal;
   final bool status;
   final int maxCharacters = 20;
@@ -14,7 +15,8 @@ class TransaksiCard extends StatelessWidget {
   const TransaksiCard({
     Key? key,
     required this.title,
-    this.tanggal = "10-05-2023, 12:12",
+    this.tanggal = "null",
+    this.jam = "null",
     this.nominal = 500000,
     this.status = true,
   }) : super(key: key);
@@ -69,7 +71,7 @@ class TransaksiCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    tanggal,
+                    '$tanggal, $jam',
                     style: font_regular.copyWith(
                       color: greyColor,
                       fontSize: 12,

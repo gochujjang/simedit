@@ -84,8 +84,6 @@ class TransaksiPage extends GetView<TransaksiController> {
                           onChanged: (value, label) {
                             controller.filter = value;
                             controller.filterTransactions();
-                            print(controller.filter);
-                            print(controller.filteredTransaksi.value);
                           },
                         ),
                       ),
@@ -124,12 +122,18 @@ class TransaksiPage extends GetView<TransaksiController> {
                                   final status = transaksiData['status'] != null
                                       ? transaksiData['status']
                                       : 'Data tidak tersedua';
-                                  final tgl =
-                                      transaksiData['created_at'] != null
-                                          ? DateFormat('dd-MM-yyyy, HH:mm')
-                                              .format(DateTime.parse(
-                                                  transaksiData['created_at']))
-                                          : 'Data tidak tersedua';
+                                  final tgl = transaksiData['tgl'] != null
+                                      ? DateFormat('dd-MM-yyyy').format(
+                                          DateTime.parse(transaksiData['tgl']))
+                                      : 'Data tidak tersedua';
+                                  final jam = transaksiData['created_at'] !=
+                                          null
+                                      ? DateFormat('HH:mm').format(
+                                          DateTime.parse(
+                                                  transaksiData['created_at'])
+                                              .toLocal(),
+                                        )
+                                      : 'null';
 
                                   return TransaksiCard(
                                     title: title,
@@ -137,6 +141,7 @@ class TransaksiPage extends GetView<TransaksiController> {
                                     status:
                                         status == 'pemasukan' ? true : false,
                                     tanggal: tgl,
+                                    jam: jam,
                                   );
                                 },
                               ),
@@ -156,52 +161,3 @@ class TransaksiPage extends GetView<TransaksiController> {
     );
   }
 }
-
-// Container(
-                          //   width: double.infinity,
-                          //   height: 50,
-                          //   decoration: BoxDecoration(
-                          //     color: whiteColor,
-                          //     borderRadius: BorderRadius.circular(16),
-                          //     border: Border.all(
-                          //       color: greyColor,
-                          //     ),
-                          //   ),
-                          //   child: DropdownButton<String>(
-                          //     hint: Text(
-                          //       'Rentang Waktu',
-                          //       style: font_regular.copyWith(
-                          //         color: darkGreyColor,
-                          //         fontSize: 14,
-                          //       ),
-                          //     ),
-                          //     padding: const EdgeInsets.only(
-                          //       top: 12,
-                          //       bottom: 12,
-                          //       left: 22,
-                          //       right: 22,
-                          //     ),
-                          //     isExpanded: true,
-                          //     underline: SizedBox(),
-                          //     value: dropdownListController
-                          //                 .selectedItem.value ==
-                          //             ""
-                          //         ? null
-                          //         : dropdownListController.selectedItem.value,
-                          //     onChanged: (newValue) {
-                          //       dropdownListController
-                          //           .updateSelectedItem(newValue.toString());
-                          //     },
-                          //     items: dropdownList.map<DropdownMenuItem<String>>(
-                          //       (String value) {
-                          //         return DropdownMenuItem<String>(
-                          //           value: value,
-                          //           child: Text(
-                          //             value,
-                          //             style: font_regular,
-                          //           ),
-                          //         );
-                          //       },
-                          //     ).toList(),
-                          //   ),
-                          // ),
