@@ -1,12 +1,17 @@
+import 'package:SiMedit/controllers/portofolio_tambah_controller.dart';
 import 'package:SiMedit/controllers/profile_controller.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   ProfileController profileController = Get.put(ProfileController());
+  PortofolioTambahController portoAddController =
+      Get.put(PortofolioTambahController());
   @override
   void onInit() {
     super.onInit();
+
     profileController.getProfiles();
+    portoAddController.getListPorto();
     update();
   }
 

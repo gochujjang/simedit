@@ -24,7 +24,7 @@ class PortoService {
     return data;
   }
 
-  Future<List> getDropdown() async {
+  Future<List<Map<String, dynamic>>> getDropdown() async {
     String? token = box.read("token");
     var response = await Dio().get(
       "https://medit.kreatifsolusindo.id/api/get-portofolio",
@@ -35,11 +35,17 @@ class PortoService {
         },
       ),
     );
-    String jsonString = jsonEncode(response.data);
-    Map obj = jsonDecode(jsonString);
-    List data = obj["data"];
-    print(data);
-    return data;
+    List<Map<String, dynamic>> data =
+        List<Map<String, dynamic>>.from(response.data["data"]);
+
+    List<Map<String, dynamic>> dropdownItems = data.map((porto) {
+      return {
+        "label": porto["title"],
+        "value": porto["id"].toString(),
+      };
+    }).toList();
+
+    return dropdownItems;
   }
 
   Future<int> getTotalPorto() async {

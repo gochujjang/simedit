@@ -14,8 +14,8 @@ import '../../widgets/buttons.dart';
 class PortofolioTransaksiPage extends StatelessWidget {
   final PortofolioTambahController controller =
       Get.put(PortofolioTambahController());
-  // final PilihPortofolioController portofolioListDropdown =
-  //     Get.put(PilihPortofolioController());
+  final PilihPortofolioController portofolioListDropdown =
+      Get.put(PilihPortofolioController());
 
   final List<String> portofolioList = [
     "Keyboard VortexSeries",
@@ -23,7 +23,6 @@ class PortofolioTransaksiPage extends StatelessWidget {
     "TWS baru",
     "Teater JKT48",
   ].toSet().toList();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -192,80 +191,92 @@ class PortofolioTransaksiPage extends StatelessWidget {
                             const SizedBox(
                               height: 16,
                             ),
-                            QDropdownField(
-                              label: "Select Porto",
-                              value: controller.porto_id,
-                              onChanged: (dynamic value, String? label) {
-                                controller.porto_id = value.toString();
-                                print("Porto: $value");
-                                print("Title: $label");
-                                print("ID: ${controller.porto_id}");
-                              },
-                              items: controller
-                                  .listUserPorto, // Pass listUserPorto directly
-                            ),
+                            Obx(() {
+                              var listmenu = controller.listUserPorto.value;
+                              print("List User Porto: $listmenu");
+                              print("pusing");
+                              print(listmenu);
+                              listmenu.forEach((item) {
+                                print("Label: ${item["label"]}");
+                              });
+
+                              return QDropdownField(
+                                label: "Pilih Portofolio",
+                                validator: Validator.required,
+                                items: listmenu.map((item) {
+                                  return {
+                                    "label": item["label"] ?? "",
+                                    "value": item["value"]?.toString() ?? "",
+                                  };
+                                }).toList(),
+                                value: controller.porto_id ?? "-",
+                                onChanged: (value, label) {
+                                  controller.porto_id = value;
+                                },
+                              );
+                            }),
                           ],
                         ),
                       ),
 
                       //dropdown
-                      Container(
-                        padding: const EdgeInsets.only(
-                          top: 0,
-                        ),
-                        child: Obx(
-                          () => Container(
-                            width: double.infinity,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: whiteColor,
-                              borderRadius: BorderRadius.circular(16),
-                              border: Border.all(
-                                color: greyColor,
-                              ),
-                            ),
-                            child: DropdownButton<String>(
-                              hint: Text(
-                                'Pilih Portofolio',
-                                style: font_regular.copyWith(
-                                  color: darkGreyColor,
-                                  fontSize: 14,
-                                  fontWeight: regular,
-                                ),
-                              ),
-                              padding: const EdgeInsets.only(
-                                top: 12,
-                                bottom: 12,
-                                left: 22,
-                                right: 22,
-                              ),
-                              isExpanded: true,
-                              underline: SizedBox(),
-                              value: controller
-                                          .selectedItem.value ==
-                                      ""
-                                  ? null
-                                  : controller.selectedItem.value,
-                              onChanged: (newValue) {
-                                controller
-                                    .updateSelectedItem(newValue.toString());
-                              },
-                              items:
-                                  portofolioList.map<DropdownMenuItem<String>>(
-                                (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(
-                                      value,
-                                      style: font_regular,
-                                    ),
-                                  );
-                                },
-                              ).toList(),
-                            ),
-                          ),
-                        ),
-                      ),
+                      // Container(
+                      //   padding: const EdgeInsets.only(
+                      //     top: 0,
+                      //   ),
+                      //   child: Obx(
+                      //     () => Container(
+                      //       width: double.infinity,
+                      //       height: 50,
+                      //       decoration: BoxDecoration(
+                      //         color: whiteColor,
+                      //         borderRadius: BorderRadius.circular(16),
+                      //         border: Border.all(
+                      //           color: greyColor,
+                      //         ),
+                      //       ),
+                      //       child: DropdownButton<String>(
+                      //         hint: Text(
+                      //           'Pilih Portofolio',
+                      //           style: font_regular.copyWith(
+                      //             color: darkGreyColor,
+                      //             fontSize: 14,
+                      //             fontWeight: regular,
+                      //           ),
+                      //         ),
+                      //         padding: const EdgeInsets.only(
+                      //           top: 12,
+                      //           bottom: 12,
+                      //           left: 22,
+                      //           right: 22,
+                      //         ),
+                      //         isExpanded: true,
+                      //         underline: SizedBox(),
+                      //         value: portofolioListDropdown
+                      //                     .selectedItem.value ==
+                      //                 ""
+                      //             ? null
+                      //             : portofolioListDropdown.selectedItem.value,
+                      //         onChanged: (newValue) {
+                      //           portofolioListDropdown
+                      //               .updateSelectedItem(newValue.toString());
+                      //         },
+                      //         items:
+                      //             portofolioList.map<DropdownMenuItem<String>>(
+                      //           (String value) {
+                      //             return DropdownMenuItem<String>(
+                      //               value: value,
+                      //               child: Text(
+                      //                 value,
+                      //                 style: font_regular,
+                      //               ),
+                      //             );
+                      //           },
+                      //         ).toList(),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                       const SizedBox(
                         height: 48,
                       ),

@@ -12,11 +12,10 @@ class PortofolioTambahController extends GetxController {
   void onInit() async {
     super.onInit();
     getListPorto();
-    print(listUserPorto);
     update();
   }
 
-  RxList<dynamic> listUserPorto = <dynamic>[].obs;
+  RxList<Map<String, dynamic>> listUserPorto = <Map<String, dynamic>>[].obs;
 
   var selectedItem = "".obs;
 
@@ -26,12 +25,14 @@ class PortofolioTambahController extends GetxController {
 
   Future<void> getListPorto() async {
     try {
-      listUserPorto.assignAll(await PortoService().getDropdown());
+      List<Map<String, dynamic>> dropdownItems =
+          await PortoService().getDropdown();
+      listUserPorto.assignAll(dropdownItems);
+      update(); // Trigger a UI update
     } on Exception catch (err) {
       print(err);
     }
   }
-  
 
   var isStatusActive = false.obs;
   String? status = 'pemasukan';
