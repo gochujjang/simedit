@@ -85,7 +85,7 @@ class LoginPage extends GetView<LoginController> {
                   InputFieldPassword(
                     title: 'Password',
                     hintText: 'Masukkan password...',
-                    validator: Validator.required,
+                    validator: Validator.password,
                     controller: passwordController,
                     onChange: (value) {
                       controller.password = value;

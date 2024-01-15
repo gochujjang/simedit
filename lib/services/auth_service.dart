@@ -1,9 +1,12 @@
+import 'package:SiMedit/controllers/register_controller.dart';
 import 'package:dio/dio.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class AuthService {
   final box = GetStorage();
   static String? token;
+  RegisterController registerController = Get.put(RegisterController());
   login({
     required String username,
     required String password,
@@ -23,10 +26,14 @@ class AuthService {
       );
       Map obj = response.data;
       token = obj["access_token"];
-      Map data = obj["data"];
-      box.write("token", token);
-      box.write("data", data);
-      return true;
+      if (token == null) {
+        return false;
+      } else {
+        Map data = obj["data"];
+        box.write("token", token);
+        box.write("data", data);
+        return true;
+      }
     } on Exception catch (_) {
       return false;
     }
@@ -55,7 +62,23 @@ class AuthService {
         },
       );
       Map obj = response.data;
-      return true;
+
+      if (obj.containsKey("data")) {
+        print("berhasil register");
+        return true;
+      } else if (obj.containsKey("username") || obj.containsKey("email")) {
+        List<String> usernameErrors =
+            obj["username"] != null ? List<String>.from(obj["username"]) : [];
+        List<String> emailErrors =
+            obj["email"] != null ? List<String>.from(obj["email"]) : [];
+
+        registerController.ret_username = usernameErrors;
+        registerController.ret_email = emailErrors;
+        print("cek cek 123");
+        print(registerController.ret_username);
+        print(registerController.ret_email);
+        return false;
+      }
     } on Exception catch (err) {
       print(err);
       return false;

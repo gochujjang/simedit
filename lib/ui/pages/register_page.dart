@@ -94,7 +94,7 @@ class RegisterPage extends GetView<RegisterController> {
                   InputField(
                     title: 'Email',
                     hintText: 'Masukkan email...',
-                    validator: Validator.required,
+                    validator: Validator.email,
                     onChange: (value) {
                       controller.email = value;
                     },
@@ -105,7 +105,7 @@ class RegisterPage extends GetView<RegisterController> {
                   InputFieldPassword(
                     title: 'Password',
                     hintText: 'Masukkan password...',
-                    validator: Validator.required,
+                    validator: Validator.password,
                     onChange: (value) {
                       controller.password = value;
                     },

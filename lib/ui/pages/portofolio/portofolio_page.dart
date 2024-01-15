@@ -164,7 +164,7 @@ class PortofolioPage extends GetView<PortofolioController> {
                                   ),
                           ),
                           const SizedBox(
-                            height: 250,
+                            height: 300,
                           ),
                         ],
                       ),

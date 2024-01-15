@@ -6,11 +6,14 @@ import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   String? name;
   String? username;
   String? email;
   String? password;
+
+  List<String>? ret_email;
+  List<String>? ret_username;
+  String? errorMsg = '';
 
   Future doRegister() async {
     Get.focusScope!.unfocus();
@@ -28,13 +31,21 @@ class RegisterController extends GetxController {
     );
 
     if (!isSuccess) {
+      if (ret_username != null && ret_username!.isNotEmpty) {
+        errorMsg = ret_username?.join(', ') ?? '';
+      } else if (ret_email != null && ret_email!.isNotEmpty) {
+        errorMsg = ret_email?.join(', ') ?? '';
+      } else {
+        errorMsg = 'Unknown error occurred.';
+      }
       Get.snackbar(
         'Error',
-        'Registrasi belum berhasil',
+        errorMsg!,
         snackPosition: SnackPosition.TOP,
         colorText: whiteColor,
         backgroundColor: redColor,
       );
+
       return;
     } else {
       Get.snackbar(
